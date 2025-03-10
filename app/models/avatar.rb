@@ -1,0 +1,2 @@
+class Avatar < ApplicationRecord
+end
