@@ -1,0 +1,2 @@
+class LeaderboardsController < ApplicationController
+end
