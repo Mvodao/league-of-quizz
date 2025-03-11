@@ -1,0 +1,13 @@
+.logo {
+  background-image: asset_url("logo_transparent.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: calc(100vh/3.5);
+  width: calc(100vw);
+  z-index: 1;
+  position: absolute;
+  top: calc(100vh/15);
+  // left: calc(100vw/2 - 100vw/1.5/2);
+  left:O;
+}
