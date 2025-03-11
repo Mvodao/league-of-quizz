@@ -55,7 +55,7 @@ end
 
 puts "Creation des spells"
 
-5.times do
+6.times do
   Spell.create!(name: Faker::Games::Pokemon.move,
               image_url:'',
               description: Faker::Lorem.paragraph(sentence_count: 2))
