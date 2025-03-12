@@ -7,7 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
+Spell.destroy_all
 puts "Creation de l'avatar"
 avatar = Avatar.new(avatar_url:"https://ca.slack-edge.com/T02NE0241-U01BRUL3UTY-1471cb9cc95e-512")
 avatar.save
@@ -55,8 +55,8 @@ end
 
 puts "Creation des spells"
 
-6.times do
+9.times do |i|
   Spell.create!(name: Faker::Games::Pokemon.move,
-              image_url:'',
-              description: Faker::Lorem.paragraph(sentence_count: 2))
+              image_url:"img_#{i+1}",
+              description: Faker::Lorem.paragraph(sentence_count: 1))
 end

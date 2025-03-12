@@ -10,13 +10,6 @@ main {
   font-family: 'Roboto', sans-serif;
 }
 
-.background {
-
-background-color: black;
-
-
-}
-
 .card-main {
   width: 80vw;
   height: 80vw;
@@ -39,12 +32,12 @@ background-color: black;
   }
 
   h2 {
-    position: absolute;
-    inset: auto auto 30px 30px;
-    margin: 0;
+    margin: 0 auto;
     transition: inset .3s .3s ease-out;
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: normal;
+    font-size: 24px;
+    color:white;
     text-transform: uppercase;
   }
 
@@ -82,20 +75,36 @@ background-color: black;
 
 }
 
-.card.selected {
-  border-color: #b80505; /* Changer la couleur de la bordure quand la carte est sélectionnée */
-  border-width: 5px;
-  box-shadow: 0 0 70px rgba(0, 123, 255, 0.5); /* Un peu d'ombre pour un effet plus visible */
+
+
+.spells {
+
+padding: 30px;
+text-align: center;
 }
 
-.card {
-  height: 60vw;
-  border-radius: 10px;
+.title{
+
+color: white;
+font-size: 30px;
+margin-bottom: 20px;
+
+}
+
+.spell-card {
+
+  height: 100px;
+  width: 100px;
+  border: 10px solid white;
+  margin-bottom: 30px;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
   color: $color-primary-white;
   box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+
+
 
   img {
     position: absolute;
@@ -104,18 +113,18 @@ background-color: black;
     height: 100%;
     top: 0;
     left: 0;
-    opacity: 0.7;
     transition: opacity .2s ease-out;
   }
 
   h2 {
     position: absolute;
-    inset: auto auto 20px 20px;
-    margin: 0;
+    inset: auto auto 10px 20px;
+    margin: 0 auto;
     transition: inset .3s .3s ease-out;
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: normal;
     text-transform: uppercase;
+    font-size: 16px
   }
 
   p, a {
@@ -154,4 +163,9 @@ background-color: black;
 
 .material-symbols-outlined {
   vertical-align: middle;
+}
+
+
+.card-selected {
+  border: 10px solid rgb(255, 0, 0);
 }

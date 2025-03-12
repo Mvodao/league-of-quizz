@@ -1,0 +1,7 @@
+class SpellsController < ApplicationController
+
+
+
+
+
+end
