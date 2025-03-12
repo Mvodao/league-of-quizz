@@ -1,8 +1,3 @@
-<div class="player-card">
-    <div class="wrapper">
-      <%= image_tag wrapper_img, class: "cover-image" %>
-    </div>
-    <%# <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-title.png" class="title" /> %>
-    <h1 class="title">The<br>Dark Rider</h1>
-    <%= image_tag "player-cards/dark_rider-character.png", class: "character" %>
-</div>
+<%= image_tag background, class: "cover-image", style: style %>
+<h1 class="<%= title_class %>" title data-queue-target="playertitle"><%= title %></h1>
+<%= image_tag character, class: character_class, data: { queue_target: "playercharacter"}%>
