@@ -28,6 +28,13 @@
   object-position: right middle;
 }
 
+.challenger-cover-image {
+  height: 100%;
+  object-fit:cover;
+  object-position: right middle;
+  transform: rotateY(3.142rad);
+}
+
 .wrapper {
   transition: all 0.5s;
   position: absolute;
@@ -35,6 +42,20 @@
   height: 100%;
   object-fit:cover;
   object-position: right middle;
+}
+
+#challenger-title {
+  opacity: 0.5;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: bold;
+  text-align:center;
+  font-size: 16px;
+  color:white;
+  position:absolute;
+  // z-index:3;
+  bottom: 150px;
+  left: 175px;
+
 }
 
 .player-card:hover .wrapper {
@@ -120,4 +141,68 @@
 .player-card:hover .character {
   opacity: 1;
   transform: translate3d(0%, -10%, 100px);
+}
+
+
+// challenger card
+
+.challenger-title {
+  opacity: 0;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: bold;
+  text-align:center;
+  font-size: 32px;
+  width: 50%;
+  transition: transform 0.5s;
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  background: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+  background-color: #FAD961;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.challenger-card:hover .challenger-title {
+  opacity: 1;
+  transform: translate3d(0%, -50px, 100px);
+}
+
+.challenger-character {
+  width: 58%;
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: -60px;
+  transform: rotateY(3.142rad);
+}
+
+.challenger-card:hover .wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.challenger-card:hover .challenger-character {
+  opacity: 1;
+  transform: translate3d(0%, -10%, 100px);
+}
+
+.challenger-card:hover .title {
+  opacity: 1;
+  transform: translate3d(0%, -50px, 100px);
+}
+
+.challenger-card:hover .wrapper::before,
+.wrapper::after {
+  opacity: 1;
+}
+
+.challenger-card:hover .wrapper::after {
+  height: 120px;
 }

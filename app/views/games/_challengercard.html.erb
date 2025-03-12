@@ -1,8 +1,12 @@
 <div class="challenger-card">
     <div class="wrapper">
-      <%= image_tag wrapper_img, class: "cover-image" %>
-        <%# <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-cover.jpg" class="cover-image" /> %>
+      <% if in_queue %>
+        <%= image_tag wrapper_img, class: "challenger-cover-image" %>
+      <% else %>
+        <%= image_tag background_img, class: "cover-image" %>
+        <h1 id="challenger-title">Waiting a worthy opponnent.</h1>
+      <% end %>
     </div>
-    <%# <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-title.png" class="title" /> %>
-    <%# <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-character.webp" class="character" /> %>
+    <h1 class="challenger-title">The<br>Wind Mage</h1>
+    <%= image_tag "player-cards/force_mage-character.webp", class: "challenger-character" %>
 </div>
