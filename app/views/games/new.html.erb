@@ -1,0 +1,23 @@
+<div class="container justify-content-center p-0" data-controller="queue">
+  <div class="player-card">
+    <%= render "playercard",
+        background: "player-cards/dark-rider-169.webp",
+        character: "player-cards/dark-rider-character.png",
+        character_class: "player-character",
+        style: "filter: grayscale(0);" ,
+        title_class: "player-title",
+        title: "Dark Rider" %>
+  </div>
+  <div class="player-card">
+    <%= render "playercard",
+        background: "player-cards/dark-rider-169.webp",
+        character: "player-cards/force-mage-character.webp",
+        character_class: "opponent-character",
+        style: "filter: grayscale(1); transform: rotateY(3.142rad);",
+        title_class: "opponent-title",
+        title: "Force Mage" %>
+      <%# <%= render "challengercard", in_queue: true, wrapper_img: "player-cards/dark-rider-169.webp", background_img: "player-cards/dark-rider-169-bw.png" %>
+  </div>
+  <div class="btn btn-outline-success btn-find-opponent" data-action="click->queue#find_opponent">Find an opponent</div>
+  </div>
+</div>

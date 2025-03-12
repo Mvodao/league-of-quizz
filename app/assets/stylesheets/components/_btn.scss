@@ -27,3 +27,21 @@
     border-color: $dark-orange;
   }
 }
+
+.btn-find-opponent {
+  position:absolute;
+  top: calc(100vh/2 - 25px);
+  border-radius: 20px;
+  left: calc(100vw/2 - 130px);
+  font-size: 28px;
+  z-index:100;
+  border-color: $dark-orange;
+  color: $light-orange;
+  font-weight: bold;
+
+  &:hover {
+    // color: white;
+    background-color: $dark-orange;
+    border-color: $dark-orange;
+  }
+}
