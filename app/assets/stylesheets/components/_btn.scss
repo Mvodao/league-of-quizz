@@ -1,0 +1,54 @@
+.btns-home {
+  position: absolute;
+  z-index: 1;
+  height: calc(3*100vh/4);
+  width: calc(100vw/1.8);
+  top: calc(100vh/3.5);
+  left: calc(100vw/2 - 100vw/1.8/2);
+  display:flex;
+  flex-direction: column;
+}
+
+.btn-home {
+  margin-top: 25px;
+  height: calc(100vh/8);
+  border-radius: 15px;
+  align-items:center;
+  display:flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size:x-large;
+  border-color: $dark-orange;
+  color: $light-orange;
+
+  &:hover {
+    // color: white;
+    background-color: $dark-orange;
+    border-color: $dark-orange;
+  }
+}
+
+.btn-group-find-opponent {
+  position:absolute;
+  top: calc(100vh/2 - 25px);
+  left: calc(100vw/2 - 130px);
+}
+.btn-find-opponent {
+  // border-radius: 20px;
+  font-size: 28px;
+  z-index:100;
+  border-color: $dark-orange;
+  color: $light-orange;
+  font-weight: bold;
+
+  &:hover {
+    // color: white;
+    background-color: $dark-orange;
+    border-color: $dark-orange;
+  }
+}
+
+.btn-hover {
+  background-color: $dark-orange;
+  border-color: $dark-orange;
+}

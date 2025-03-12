@@ -1,0 +1,131 @@
+.wrapper {
+  transition: all 0.5s;
+  bottom: 0;
+  opacity: 1;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgb(12, 13, 19) 97%
+  );
+}
+
+
+.player-card {
+  width: 100%;
+  height: calc(100vh/2);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-image {
+  object-fit: cover;
+  height: calc(100vh/2);
+  width: 100%;
+}
+
+.empty-cover-image {
+  object-fit: cover;
+  height: calc(100vh/2);
+  width: 100%;
+  filter: grayscale(1);
+  transform: rotateY(3.142rad);
+}
+
+.player-character {
+  width: 55%;
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  z-index: 1;
+  bottom: -20px;
+  left: -60px;
+}
+
+.opponent-character {
+  width: 55%;
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  z-index: 1;
+  bottom: -20px;
+  right: 10px;
+}
+
+.player-title {
+  opacity: 0;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: bold;
+  text-align:center;
+  font-size: 32px;
+  width: 50%;
+  transition: all 0.5s;
+  position:absolute;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+  background-color: #FAD961;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.opponent-title {
+  opacity: 0;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: bold;
+  text-align:center;
+  font-size: 32px;
+  width: 50%;
+  transition: all 0.5s;
+  position:absolute;
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+  background-color: #FAD961;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.challenger-waiting-title {
+  opacity: 0.5;
+  font-family: "Cinzel Decorative", serif;
+  font-weight: bold;
+  text-align:center;
+  font-size: 16px;
+  color:white;
+  // z-index:3;
+  position:absolute;
+  top: 35%;
+  left: 20%;
+}
+
+
+.toggle {
+  opacity: 1;
+  transform: translate3d(0%, -50px, 100px);
+}
+
+.rotating-wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(10deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.rotating-wrapper-challenger {
+  transform: perspective(900px) translateY(+5%) rotateX(-10deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.challenger-image {
+  filter: grayscale(0);
+}

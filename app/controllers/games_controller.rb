@@ -40,8 +40,9 @@ class GamesController < ApplicationController
   def create
   end
   def edit
+    @game = Game.find(params[:id])
+    @spells = Spell.all
   end
-
   def udpate
   end
 end

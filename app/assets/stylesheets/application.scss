@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/variables";
 
 // External libraries
 @import "bootstrap";
@@ -10,4 +11,5 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "pages/question-show"
+@import "pages/question-show";
+@import "config/spell";

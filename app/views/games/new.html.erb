@@ -1,0 +1,27 @@
+<div class="container justify-content-center p-0" data-controller="queue">
+  <div class="player-card">
+    <%= render "playercard",
+        background: "player-cards/dark-rider-169.webp",
+        background_class: "cover-image",
+        character: "player-cards/dark-rider-character.png",
+        character_class: "player-character",
+        title_class: "player-title",
+        title: "Dark Rider" %>
+  </div>
+  <div class="player-card">
+    <%= render "challengercard",
+        background: "player-cards/dark-rider-169.webp",
+        background_class: "empty-cover-image",
+        character: "player-cards/force-mage-character.webp",
+        character_class: "opponent-character",
+        title_class: "challenger-waiting-title",
+        title: "No worthy opponent yet." %>
+      <%# <%= render "challengercard", in_queue: true, wrapper_img: "player-cards/dark-rider-169.webp", background_img: "player-cards/dark-rider-169-bw.png" %>
+  </div>
+  <div class="btn-group btn-group-find-opponent" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-outline-success btn-find-opponent" data-action="click->queue#find_opponent" data-queue-target="find">Find an opponent</button>
+    <button type="button" class="btn btn-outline-success btn-find-opponent d-none" data-action="click->queue#cancel" data-queue-target="cancel">X</button>
+  </div>
+  <%# <div class="btn btn-outline-success btn-find-opponent" data-action="click->queue#find_opponent">Find an opponent</div> %>
+  </div>
+</div>
