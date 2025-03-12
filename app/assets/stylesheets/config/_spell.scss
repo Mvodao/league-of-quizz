@@ -75,11 +75,6 @@ main {
 
 }
 
-.card-selected {
-  border: 5px solid #ff0000; /* Changer la couleur de la bordure quand la carte est sélectionnée */
-  border-width: 20px;
-  box-shadow: 0 0 70px rgba(0, 123, 255, 0.5); /* Un peu d'ombre pour un effet plus visible */
-}
 
 
 .spells {
@@ -90,12 +85,14 @@ text-align: center;
 
 .title{
 
+color: white;
 font-size: 30px;
 margin-bottom: 20px;
 
 }
 
 .spell-card {
+
   height: 100px;
   width: 100px;
   border: 10px solid white;
@@ -106,6 +103,8 @@ margin-bottom: 20px;
   position: relative;
   color: $color-primary-white;
   box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+
+
 
   img {
     position: absolute;
@@ -164,4 +163,9 @@ margin-bottom: 20px;
 
 .material-symbols-outlined {
   vertical-align: middle;
+}
+
+
+.card-selected {
+  border: 10px solid rgb(255, 0, 0);
 }
