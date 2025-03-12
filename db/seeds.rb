@@ -1,13 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 puts "Creation de l'avatar"
 avatar = Avatar.new(avatar_url:"https://ca.slack-edge.com/T02NE0241-U01BRUL3UTY-1471cb9cc95e-512")
 avatar.save
@@ -17,46 +7,75 @@ user = User.new(username: "BobD", first_name:"Bob", last_name:"Dylan", email:"bo
 user.avatar = avatar
 user.save
 
+puts "Creation du bot de combat"
+user = User.new(username: "BotC", first_name:"Bot", last_name:"Combat", email:"bot.combat@gmail.com", password: "123456")
+user.avatar = avatar
+user.save
 
-QUESTION_TYPE = %w(image sound text)
-CATEGORIES = %w(Geographic Entertainment History Art&Litterature Science&Nature Sports&Hobbies)
+puts "Création des catégories..."
+CATEGORIES = %w[Géographie Divertissement Histoire Art\ &\ Littérature Sciences Sport]
+categories = CATEGORIES.map { |name| Category.create!(name: name) }
 
-puts "Creation des categories"
 
-CATEGORIES.each do |cat|
-  Category.create!(name: cat)
-end
+puts "Création des questions et des réponses..."
+questions_data = [
+  {
+    content: "Quelle est la capitale de la France ?",
+    category: categories[0], # Géographie
+    correct_answer: "Paris",
+    wrong_answers: ["Lyon", "Marseille", "Nice"]
+  },
+  {
+    content: "Qui a réalisé le film *Inception* ?",
+    category: categories[1], # Divertissement
+    correct_answer: "Christopher Nolan",
+    wrong_answers: ["Steven Spielberg", "Quentin Tarantino", "James Cameron"]
+  },
+  {
+    content: "En quelle année a eu lieu la Révolution française ?",
+    category: categories[2], # Histoire
+    correct_answer: "1789",
+    wrong_answers: ["1776", "1804", "1848"]
+  },
+  {
+    content: "Quel peintre est célèbre pour *La Nuit étoilée* ?",
+    category: categories[3], # Art & Littérature
+    correct_answer: "Vincent Van Gogh",
+    wrong_answers: ["Claude Monet", "Pablo Picasso", "Salvador Dalí"]
+  },
+  {
+    content: "Quelle planète est la plus proche du Soleil ?",
+    category: categories[4], # Littérature Sciences Sport
+    correct_answer: "Mercure",
+    wrong_answers: ["Vénus", "Mars", "Jupiter"]
+  }
+]
 
-puts "Creation des questions"
-20.times do |_|
-  q = Question.new(content: Faker::Lorem.paragraph(sentence_count: 1),
-                   question_type: QUESTION_TYPE.sample,
-                   media_url: ""
-                  )
-  q.category = Category.all.sample
-  q.save
-end
+questions_data.each do |data|
+  question = Question.create!(
+    content: data[:content],
+    question_type: "text",
+    media_url: "",
+    category: data[:category]
+  )
 
-puts "Creation des answers"
-questions_id = []
-20.times do |_|
-  answers = []
-  answers << Answer.new(content: Faker::Drone.name, is_correct: true)
-  3.times do |_|
-    answers << Answer.new(content: Faker::Drone.name, is_correct: false)
+  # Ajouter la réponse correcte
+  Answer.create!(content: data[:correct_answer], is_correct: true, question: question)
+
+  # Ajouter les réponses incorrectes
+  data[:wrong_answers].each do |wrong_answer|
+    Answer.create!(content: wrong_answer, is_correct: false, question: question)
   end
-  question = Question.where.not(id: questions_id).sample
-  questions_id << question.id
-  answers.each do |answer|
-    answer.question = question
-    answer.save
+end
+
+puts "Création des relations questions-jeux..."
+games = Game.all
+questions = Question.all
+
+games.each do |game|
+  questions.sample(5).each do |question| # Associe 5 questions aléatoires à chaque jeu
+    QuestionsPool.create!(game: game, question: question)
   end
 end
 
-puts "Creation des spells"
-
-5.times do
-  Spell.create!(name: Faker::Games::Pokemon.move,
-              image_url:'',
-              description: Faker::Lorem.paragraph(sentence_count: 2))
-end
+puts "Données créées avec succès !"

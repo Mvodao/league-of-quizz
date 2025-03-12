@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :games, only: [:new, :create, :edit, :udpate, :show]
+  resources :games, only: [:new, :create, :edit, :update, :show] do
+    member do
+      get 'show/:question_index', action: :show, as: :question
+      post 'validate_answer'
+    end
+  end
   resources :leaderboards, only: [:show]
 end
