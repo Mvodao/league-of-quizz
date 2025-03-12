@@ -1,34 +1,17 @@
-<div class="background">
-<div class="container">
 
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-      card.addEventListener('click', function() {
-        // Retirer la classe 'selected' de toutes les cartes
-        cards.forEach(c => c.classList.remove('selected'));
-
-        // Ajouter la classe 'selected' à la carte cliquée
-        card.classList.add('selected');
-      });
-    });
-  });
-</script>
-
-
- <div class="row">
+ <div class="spells row">
+ <span class= "title">Choix du personnage</span>
     <% @spells.each do |spell| %>
-      <div class="col-6">
+      <div class="col-4">
         <%= render "spell", spell: spell %>
       </div>
     <% end %>
+    <input class="btn btn-danger mt-2" type="submit" value="Confirm">
   </div>
 
 
-</div>
+
+
 
 
 </div>
