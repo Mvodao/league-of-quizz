@@ -2,26 +2,51 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="queue"
 export default class extends Controller {
-  static targets = ["playerwrapper", "playertitle", "playercharacter"]
+  static targets = ["playerwrapper",
+                    "playertitle",
+                    "playercharacter",
+                    "find",
+                    "cancel",
+                    "challengerimage",
+                    "challengerwrapper",
+                    "challengertitle",
+                    "challengercharacter",]
   connect() {
     console.log("queue controller connected")
   }
 
-  find_opponent() {
-    this.playertitleTarget.style.opacity = 1
-    this.playertitleTarget.style.transform = "translate3d(0%, -50px, 100px)"
+  find_opponent(event) {
+    this.playertitleTarget.classList.add("toggle")
+    this.playercharacterTarget.classList.add("toggle")
+    this.playerwrapperTarget.classList.add("rotating-wrapper")
+    this.findTarget.innerText = "Searching..."
+    this.findTarget.classList.add("btn-hover")
+    this.cancelTarget.innerText = "X"
+    this.cancelTarget.classList.remove("d-none")
 
-    this.playercharacterTarget.style.opacity = 1
-    this.playercharacterTarget.style.transform = "translate3d(0%, -50px, 100px)"
+    setTimeout(() => {
+      this.findTarget.innerText = "Opponent Found!"
+      this.cancelTarget.classList.add("d-none")
+      this.challengerimageTarget.classList.remove("empty-cover-image")
+      this.challengerimageTarget.classList.add("cover-image")
+      this.challengerimageTarget.style.transform = "rotateY(3.142rad)"
+      this.challengertitleTarget.classList.add("toggle")
+      this.challengercharacterTarget.classList.add("toggle")
+      this.challengerwrapperTarget.classList.add("rotating-wrapper-challenger")
+      this.challengertitleTarget.classList.add("opponent-title")
+      this.challengertitleTarget.classList.remove("challenger-waiting-title")
+      this.challengertitleTarget.innerText = "Wise Mage"
+      window.location.href = "/games/1/edit"
+    }, 1000);
+  }
 
-    this.playerwrapperTarget.style.transform = "perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0)"
-    this.playerwrapperTarget.style.boxShadow = "2px 35px 32px -8px rgba(0, 0, 0, 0.75)"
-    this.playerwrapperTarget.style.webkitBoxShadow = "2px 35px 32px -8px rgba(0, 0, 0, 0.75)"
-    this.playerwrapperTarget.style.mozBoxShadow = "2px 35px 32px -8px rgba(0, 0, 0, 0.75)"
-
-    this.playerwrapperTarget.style.backgroundImage = " linear-gradient( to top, transparent 46%,rgba(12, 13, 19, 0.5) 68%,
-    rgb(12, 13, 19) 97%
-  );"
-
+  cancel(event) {
+    this.playertitleTarget.classList.remove("toggle")
+    this.playercharacterTarget.classList.remove("toggle")
+    this.playerwrapperTarget.classList.remove("rotating-wrapper")
+    this.findTarget.innerText = "Finding an opponent"
+    this.findTarget.classList.remove("btn-hover")
+    this.cancelTarget.innerText = ""
+    this.cancelTarget.classList.add("d-none")
   }
 }

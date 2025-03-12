@@ -1,12 +1,5 @@
-<div class="challenger-card">
-    <div class="wrapper">
-      <% if in_queue %>
-        <%= image_tag wrapper_img, class: "challenger-cover-image" %>
-      <% else %>
-        <%= image_tag background_img, class: "background-cover-image" %>
-        <h1 class="challenger-waiting-title">Waiting a worthy opponnent.</h1>
-      <% end %>
-    </div>
-    <h1 class="challenger-title">The<br>Wind Mage</h1>
-    <%= image_tag "player-cards/force_mage-character.webp", class: "challenger-character" %>
+<div class="wrapper" data-queue-target="challengerwrapper">
+  <%= image_tag background, class: background_class, data: {queue_target: "challengerimage"}%>
 </div>
+<h1 class="<%= title_class %>" title data-queue-target="challengertitle"><%= title %></h1>
+<%= image_tag character, class: character_class, data: { queue_target: "challengercharacter"}%>
