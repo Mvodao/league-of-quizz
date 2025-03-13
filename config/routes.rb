@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :games, only: [:new, :create, :edit, :update, :show] do
+    # member do
+    #   get 'show/:question_index', action: :show, as: :question
+    #   post 'validate_answer'
+    # end
     member do
-      get 'show/:question_index', action: :show, as: :question
-      post 'validate_answer'
+      get "result", to:"games#result"
     end
+    resources :questions, only: [:show]
+    # resources :leaderboards, only: [:index]
   end
-  resources :leaderboards, only: [:show]
 end
