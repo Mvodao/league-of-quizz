@@ -6,6 +6,5 @@
         <%= render "spell", spell: spell %>
       </div>
     <% end %>
-    <input class="btn btn-danger mt-2" type="submit" value="Confirm">
+    <<%= link_to "Lancer la partie", game_path(@game.id), class: "btn btn-danger mt-2" %>
   </div>
-

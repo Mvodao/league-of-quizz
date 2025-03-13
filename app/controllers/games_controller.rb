@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
-    @questions = @game.questions
+    @questions = @game.questions_pools.includes(:question).map(&:question)
     @current_question_index = params[:question_index].to_i || 0
 
     if @current_question_index >= @questions.size
@@ -27,7 +27,7 @@ class GamesController < ApplicationController
     if @answer.is_correct
       flash[:notice] = "Bonne réponse !"
     else
-      flash[:alert] = "Mauvaise réponse loser."
+      flash[:alert] = "Mauvaise réponse, essaye encore"
     end
 
     next_question_index = params[:question_index].to_i + 1
@@ -35,14 +35,23 @@ class GamesController < ApplicationController
   end
 
   def new
+    @game = Game.create
   end
+
 
   def create
     @game = Game.new
     @game.users << User.find(1)
     @game.users << User.find(2)
-    redirect_to edit_game_path(@game)
+
+    if @game.save
+      redirect_to edit_game_path(@game)
+    else
+      flash[:alert] = "Une erreur s'est produite lors de la création du jeu."
+      render :new, status: :unprocessable_entity
+    end
   end
+
   def edit
     @game = Game.find(params[:id])
     @spells = Spell.all
