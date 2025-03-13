@@ -68,14 +68,40 @@ questions_data.each do |data|
   end
 end
 
+
+9.times do
+  Spell.create!(name: Faker::Games::Pokemon.move,
+              image_url:'',
+              description: Faker::Lorem.paragraph(sentence_count: 2))
+end
+
+Game.create!
+
 puts "Création des relations questions-jeux..."
 games = Game.all
 questions = Question.all
 
 games.each do |game|
   questions.sample(5).each do |question| # Associe 5 questions aléatoires à chaque jeu
-    QuestionsPool.create!(game: game, question: question)
+    question_pool = QuestionsPool.new
+    question_pool.game = game
+    question_pool.question = question
+    question_pool.save
   end
 end
 
 puts "Données créées avec succès !"
+
+user_game = UserGame.new
+user_game.game = Game.first
+user_game.user = User.find(1)
+user_game.spell = Spell.find(1)
+user_game.category = Category.find(1)
+user_game.save
+
+user_game = UserGame.new
+user_game.game = Game.first
+user_game.user = User.find(2)
+user_game.spell = Spell.find(2)
+user_game.category = Category.find(2)
+user_game.save
