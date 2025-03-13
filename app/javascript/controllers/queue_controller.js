@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { Turbo } from "@hotwired/turbo-rails";
 
 // Connects to data-controller="queue"
 export default class extends Controller {
@@ -11,6 +12,8 @@ export default class extends Controller {
                     "challengerwrapper",
                     "challengertitle",
                     "challengercharacter",]
+
+
   connect() {
     console.log("queue controller connected")
   }
@@ -24,7 +27,7 @@ export default class extends Controller {
     this.cancelTarget.innerText = "X"
     this.cancelTarget.classList.remove("d-none")
 
-    setTimeout(() => {
+    this.timeOut = setTimeout(() => {
       this.findTarget.innerText = "Opponent Found!"
       this.cancelTarget.classList.add("d-none")
       this.challengerimageTarget.classList.remove("empty-cover-image")
@@ -36,8 +39,8 @@ export default class extends Controller {
       this.challengertitleTarget.classList.add("opponent-title")
       this.challengertitleTarget.classList.remove("challenger-waiting-title")
       this.challengertitleTarget.innerText = "Wise Mage"
-      window.location.href = "/games/1/edit"
-    }, 1000);
+
+    }, 2000);
   }
 
   cancel(event) {
@@ -48,5 +51,16 @@ export default class extends Controller {
     this.findTarget.classList.remove("btn-hover")
     this.cancelTarget.innerText = ""
     this.cancelTarget.classList.add("d-none")
+
+    this.challengerimageTarget.classList.add("empty-cover-image")
+    this.challengerimageTarget.classList.remove("cover-image")
+    // this.challengerimageTarget.style.transform = "rotateY(3.142rad)"
+    this.challengertitleTarget.classList.remove("toggle")
+    this.challengercharacterTarget.classList.remove("toggle")
+    this.challengerwrapperTarget.classList.remove("rotating-wrapper-challenger")
+    this.challengertitleTarget.classList.remove("opponent-title")
+    this.challengertitleTarget.classList.add("challenger-waiting-title")
+    this.challengertitleTarget.innerText = "No worthy opponent yet."
+    clearTimeout(this.timeOut);
   }
 }
