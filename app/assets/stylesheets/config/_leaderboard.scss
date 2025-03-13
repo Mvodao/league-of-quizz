@@ -1,0 +1,25 @@
+.image-winner {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.image-looser {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.image-container img {
+  max-width: 48%; /* Optionnel : permet de réduire la taille des images */
+}
+
+.image-item {
+  text-align: center; /* Centre le texte et l'image */
+  color: greenyellow;
+}
+
+.image-item h3 {
+  margin-bottom: 10px; /* Espace entre le nom et l'image */
+}
