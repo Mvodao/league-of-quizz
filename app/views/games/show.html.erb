@@ -1,0 +1,35 @@
+<div class="container">
+  <% if @question.nil? %>
+    <h3 class="text-center">Vous avez terminé toutes les questions !</h3>
+    <div class="text-center">
+      <%= link_to "Retour à l'accueil", root_path, class: "btn btn-primary" %>
+    </div>
+  <% else %>
+    <div class="progress my-4">
+      <div class="progress-bar" role="progressbar" style="width: <%= @progress_percentage %>%;" aria-valuenow="<%= @progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <h5 class="text-center">Question <%= @question.category_id %></h5>
+    <div class="question-box text-center">
+      <div class="image-placeholder">
+        <% if @question.media_url.present? %>
+          <img src="<%= @question.media_url %>" alt="question image">
+        <% end %>
+        <h3><%= @question.content %></h3>
+      </div>
+    </div>
+    <div class="answer-box d-flex flex-column align-items-center">
+      <% @answers.each do |answer| %>
+        <%= form_with url: validate_answer_game_path(@game), method: :post, local: true do |f| %>
+          <%= f.hidden_field :question_id, value: @question.id %>
+          <%= f.hidden_field :answer_id, value: answer.id %>
+          <%= f.hidden_field :question_index, value: @current_question_index %>
+          <%= f.submit answer.content, class: "btn answer-button" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="timer-container" data-controller="timer" data-timer-duration-value="30">
+  <h3 data-timer-target="timer">30 secondes restantes</h3>
+</div>
