@@ -12,14 +12,6 @@ class QuestionsController < ApplicationController
       @user_games.find_by(user: User.find(2)).update(score: 0)
     end
 
-    # if @current_question_index > @questions.size
-    #   flash[:notice] = "Toutes les questions ont été répondues !"
-    #   @question = nil
-    #   @answers = []
-    #   @progress_percentage = 100
-    #   return
-    # end
-
     @question = @questions[@current_question_index-1]
     @answers = @question.answers
 

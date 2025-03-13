@@ -12,9 +12,6 @@ class GamesController < ApplicationController
   end
 
   def update
-    if !(defined? @question_id)
-      @question_id = 0
-    end
     if params.key?(:question_id)
       score
     end
@@ -25,16 +22,17 @@ class GamesController < ApplicationController
     @question_id = params[:question_index].to_i - 1
     @question = @game.questions[@question_id]
     @answer = Answer.find(params[:answer_id])
-    if @answer.is_correct && params[:question_index].to_i < @game.questions.count
-      flash[:notice] = "Bonne réponse !"
+    @is_correct = @answer.is_correct
+    if @is_correct && params[:question_index].to_i < @game.questions.count
+      # flash[:notice] = "Bonne réponse !"
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score + 1)
       @next_question = @game.questions[@question_id + 1]
       redirect_to game_question_path(@game, @next_question)
-    elsif @answer.is_correct && params[:question_index] = @game.questions.count
-      redirect_to game_leaderboards_path(@game)
+    elsif @is_correct && params[:question_index] = @game.questions.count
+      redirect_to result_game_path(@game)
     else
-      flash[:alert] = "Mauvaise réponse ! Essaye encore"
+      # flash[:alert] = "Mauvaise réponse ! Essaye encore"
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score - 1)
     end

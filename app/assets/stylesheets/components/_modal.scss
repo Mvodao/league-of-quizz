@@ -1,0 +1,12 @@
+.success-modal {
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url("success.webp");
+  background-size: cover;
+  height:500px;
+  color:white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size:32px;
+  text-align:center;
+}

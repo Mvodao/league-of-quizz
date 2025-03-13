@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="modal">
   <% if @question.nil? %>
     <h3 class="text-center">Vous avez terminé toutes les questions !</h3>
     <div class="text-center">
@@ -19,15 +19,28 @@
     </div>
     <div class="answer-box d-flex flex-column align-items-center">
       <% @answers.each do |answer| %>
-        <%= form_with(url: game_path(@game), method: :patch) do |f| %>
+        <%= form_with(url: game_path(@game), method: :patch, data: { modal_target:"sub", action: "submit->modal#fire"}) do |f| %>
           <%= f.hidden_field :question_id, value: @question.id %>
-          <%= f.hidden_field :answer_id, value: answer.id %>
+          <%= f.hidden_field :answer_id, value: answer.id, data: {modal_iscorrect_value: answer.id.to_s}  %>
           <%= f.hidden_field :question_index, value: @current_question_index %>
           <%= f.submit answer.content, class: "btn answer-button" %>
         <% end %>
       <% end %>
     </div>
   <% end %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary visually-hidden" data-modal-target="modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div id="questionmodal" class="modal-body success-modal">
+          Woouh such speed! You answered correctly first!
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="timer-container" data-controller="timer" data-timer-duration-value="1000">
