@@ -38,7 +38,11 @@ export default class extends Controller {
       this.challengerwrapperTarget.classList.add("rotating-wrapper-challenger")
       this.challengertitleTarget.classList.add("opponent-title")
       this.challengertitleTarget.classList.remove("challenger-waiting-title")
-      this.challengertitleTarget.innerText = "Wise Mage"
+      this.challengertitleTarget.innerText = "Terminator"
+
+      setTimeout(() => {
+        window.location.href = "/games/1/questions/1"
+      }, 2000);
 
     }, 2000);
   }

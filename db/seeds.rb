@@ -3,12 +3,12 @@ avatar = Avatar.new(avatar_url:"https://ca.slack-edge.com/T02NE0241-U01BRUL3UTY-
 avatar.save
 
 puts "Creation du user Bob Dylan le king"
-user = User.new(username: "BobD", first_name:"Bob", last_name:"Dylan", email:"bob.dylan@gmail.com", password: "123456")
+user = User.new(username: "Bob Dylan", first_name:"Bob", last_name:"Dylan", email:"bob.dylan@gmail.com", password: "123456")
 user.avatar = avatar
 user.save
 
 puts "Creation du bot de combat"
-user = User.new(username: "BotC", first_name:"Bot", last_name:"Combat", email:"bot.combat@gmail.com", password: "123456")
+user = User.new(username: "Terminator", first_name:"Bot", last_name:"Combat", email:"bot.combat@gmail.com", password: "123456")
 user.avatar = avatar
 user.save
 
