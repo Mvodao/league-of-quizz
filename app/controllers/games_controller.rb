@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def new
-    @game = Game.find(1)
+    @game = Game.new
+    @current_user = current_user
     # @game = Game.new
     # Question.all.sample(5).each do |question|
     #   question_pool = QuestionsPool.new
@@ -27,7 +28,37 @@ class GamesController < ApplicationController
   end
 
   def create
+    @game = Game.create
+    user_game = UserGame.new
+    user_game.game = @game
+    user_game.user = User.find(params[:user_1])
+    user_game.spell = Spell.find(2)
+    user_game.category = Category.find(2)
+    user_game.save
+
+    user_game = UserGame.new
+    user_game.game = @game
+    user_game.user = User.find(params[:user_2])
+    user_game.spell = Spell.find(1)
+    user_game.category = Category.find(1)
+    user_game.save
+
+    Game.first.questions.each do |question|
+      pools = QuestionsPool.new
+      pools.game = @game
+      pools.question = question
+      pools.save
+    end
     redirect_to edit_game_path(@game)
+  end
+
+  def add_spell
+    @game = Game.find(params[:id])
+    @current_user_user_games = @game.user_games.find_by(user: current_user)
+    @opponent_user_games = @game.user_games.where.not(user: current_user)[O]
+    @current_user_user_games.update(spell: Spell.find(params[:spell_id]))
+    @opponent_user_games.update(spell: Spell.find(2))
+    redirect_to game_question(@games, 1)
   end
 
   def edit

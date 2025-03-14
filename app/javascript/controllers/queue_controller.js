@@ -11,7 +11,8 @@ export default class extends Controller {
                     "challengerimage",
                     "challengerwrapper",
                     "challengertitle",
-                    "challengercharacter",]
+                    "challengercharacter",
+                    "form"]
 
 
   connect() {
@@ -41,7 +42,8 @@ export default class extends Controller {
       this.challengertitleTarget.innerText = "Terminator"
 
       setTimeout(() => {
-        window.location.href = "/games/1/questions/1"
+        // window.location.href = "/games/1/questions/1"
+        this.formTarget.submit()
       }, 2000);
 
     }, 2000);

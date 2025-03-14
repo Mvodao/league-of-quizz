@@ -69,9 +69,9 @@ questions_data.each do |data|
 end
 
 
-9.times do
+9.times do |i|
   Spell.create!(name: Faker::Games::Pokemon.move,
-              image_url:'',
+              image_url: "img_#{i+1}.jpg",
               description: Faker::Lorem.paragraph(sentence_count: 2))
 end
 

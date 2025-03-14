@@ -2,6 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="spell"
 export default class extends Controller {
+  static targets = ["form", "spellid"]
+
   connect() {
     const cards = document.querySelectorAll('.spell-card');
     cards.forEach(card => {
@@ -10,6 +12,8 @@ export default class extends Controller {
           card.classList.remove("card-selected")
         } else {
           card.classList.add("card-selected");
+          console.log(card.id)
+          this.spellidTarget.value = card.id
         }
         cards.forEach(element => {
 
@@ -19,5 +23,10 @@ export default class extends Controller {
         });
       })
       })
+    }
+
+    fire(){
+
+      this.formTarget.submit()
     }
   }
