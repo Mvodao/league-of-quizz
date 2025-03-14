@@ -41,7 +41,7 @@
 }
 
 .question-box h3 {
-  margin-top: 10px;
+  margin: 7px O;
   color: #151717;
   text-align: center;
   backdrop-filter: blur(5px) ;
@@ -65,9 +65,25 @@
     border-color: 2px solid $dark-orange;
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
+    transition: background-color 0.3s ease;
   }
  }
 
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+.error {
+  background-color: red !important;
+  animation: wiggle 0.2s ease-in-out 3;
+}
+
+.score {
+  color:white;
+}
 //  .answer-button:hover {
 //   transform: scale(1.05);
 //   transition: transform 0.2s ease-in-out;

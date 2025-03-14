@@ -23,25 +23,40 @@ class GamesController < ApplicationController
     @question = @game.questions[@question_id]
     @answer = Answer.find(params[:answer_id])
     @is_correct = @answer.is_correct
-    if @is_correct && params[:question_index].to_i < @game.questions.count
-      # flash[:notice] = "Bonne réponse !"
+    if params[:question_index].to_i == 1
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score + 1)
       @next_question = @game.questions[@question_id + 1]
       redirect_to game_question_path(@game, @next_question)
-    elsif @is_correct && params[:question_index] = @game.questions.count
-      redirect_to result_game_path(@game)
-    else
-      # flash[:alert] = "Mauvaise réponse ! Essaye encore"
+    elsif params[:question_index].to_i == 2
+      last_score = @game.user_games.where.not(user: current_user)[0].score
+      @game.user_games.where.not(user: current_user)[0].update(score: last_score + 1)
+      @next_question = @game.questions[@question_id + 1]
+      redirect_to game_question_path(@game, @next_question)
+    elsif params[:question_index].to_i == 3
+      last_score = @game.user_games.find_by(user: current_user).score
+      @game.user_games.find_by(user: current_user).update(score: last_score + 1)
+      @next_question = @game.questions[@question_id + 1]
+      redirect_to game_question_path(@game, @next_question)
+    elsif params[:question_index].to_i == 4 && @is_correct
+      last_score = @game.user_games.where.not(user: current_user)[0].score
+      @game.user_games.where.not(user: current_user)[0].update(score: last_score - 2)
+      @next_question = @game.questions[@question_id + 1]
+      redirect_to game_question_path(@game, @next_question)
+    elsif params[:question_index].to_i == 4 && !@is_correct
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score - 1)
+    else
+      last_score = @game.user_games.find_by(user: current_user).score
+      @game.user_games.find_by(user: current_user).update(score: last_score + 1)
+      @next_question = @game.questions[@question_id + 1]
+      redirect_to result_game_path(@game)
     end
   end
 
   def result
     @game = Game.find(params[:id])
-    @user_games = @game.user_games
-    @user1 = @user_games.find_by(user: current_user)
-    @user2 = @user_games.where.not(user: current_user)[0]
+    @user1 = @game.user_games.find_by(user: current_user)
+    @user2 = @game.user_games.where.not(user: current_user)[0]
   end
 end

@@ -1,7 +1,22 @@
 .success-modal {
-  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url("success.webp");
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), image-url("success.webp");
   background-size: cover;
-  height:500px;
+  background-position: center;
+  // height:300px;
+  color:white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size:32px;
+  text-align:center;
+}
+
+.lose-modal {
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), image-url("lose.webp");
+  background-size: cover;
+  background-position: center;
+  // height:300px;
   color:white;
   display:flex;
   justify-content: center;
