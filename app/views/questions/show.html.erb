@@ -1,14 +1,21 @@
-<div class="container">
+<div class="container" data-controller="modal">
   <% if @question.nil? %>
     <h3 class="text-center">Vous avez terminé toutes les questions !</h3>
     <div class="text-center">
       <%= link_to "Retour à l'accueil", root_path, class: "btn btn-primary" %>
     </div>
   <% else %>
-    <div class="progress my-4">
-      <div class="progress-bar" role="progressbar" style="width: <%= @progress_percentage %>%;" aria-valuenow="<%= @progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress">
+      <div class="progress-bar pt-4" role="progressbar" style="width: <%= @progress_percentage %>%;" aria-valuenow="<%= @progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <h5 class="text-center">Question <%= @question.category_id %></h5>
+    <div class="score d-flex justify-content-center flex-column align-items-center mt-3">
+      <div>
+        Your Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
+      </div>
+      <div>
+        Your Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
+      </div>
+    </div>
     <div class="question-box text-center">
       <div class="image-placeholder">
         <% if @question.media_url.present? %>
@@ -18,8 +25,12 @@
       </div>
     </div>
     <div class="answer-box d-flex flex-column align-items-center">
-      <% @answers.each do |answer| %>
-        <%= form_with(url: game_path(@game), method: :patch) do |f| %>
+      <% index = 0 %>
+      <% @answers.each_with_index do |answer, a_index| %>
+        <% index = 0 if a_index%4 == 0 %>
+        <div class="visually-hidden"></div>
+        <% index += 1 %>
+        <%= form_with(url: game_path(@game), class:"answer_#{answer.is_correct.to_s}",method: :patch, data: { modal_target:"sub#{index}", action: "submit->modal#fire#{index}"}) do |f| %>
           <%= f.hidden_field :question_id, value: @question.id %>
           <%= f.hidden_field :answer_id, value: answer.id %>
           <%= f.hidden_field :question_index, value: @current_question_index %>
@@ -28,8 +39,20 @@
       <% end %>
     </div>
   <% end %>
-</div>
-
-<div class="timer-container" data-controller="timer" data-timer-duration-value="1000">
-  <h3 data-timer-target="timer" class="timer">30 secondes restantes</h3>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary visually-hidden" data-modal-target="modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div id="questionmodal" class="modal-body success-modal" data-modal-target="modaldiv">
+          Woouh such speed! You answered correctly first!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-2" data-controller="timer" data-timer-duration-value="1000">
+    <h3 data-timer-target="timer" class="timer">30 secondes restantes</h3>
+  </div>
 </div>
