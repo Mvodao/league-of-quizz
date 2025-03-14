@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-top: 200px;
+
 }
 
 .image-looser {
@@ -22,4 +22,17 @@
 
 .image-item h3 {
   margin-bottom: 10px; /* Espace entre le nom et l'image */
+}
+
+.container{
+
+  text-align: center; /* Centrer le texte à l'intérieur du conteneur */
+  color: orange; /* Couleur du texte */
+  border: 2px solid orange; /* Bordure autour du conteneur (facultatif) */
+  background-color: rgba(255, 255, 255, 0.226); /* Fond blanc pour le conteneur */
+  border-radius: 8px; /* Bords arrondis pour un effet esthétique */
+  width : 300px; /* Largeur du conteneur (ajustez selon vos besoins) */
+  height : 150px; /* Hauteur du conteneur (ajustez selon vos besoins) */
+  padding : 20px;
+
 }
