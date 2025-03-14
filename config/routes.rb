@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :games, only: [:new, :create, :edit, :update, :show] do
     member do
-      get 'show/:question_index', action: :show, as: :question
-      post 'validate_answer'
       post 'select_spell'
+      get 'result', to: "games#results"
     end
+    resources :questions, only: [:show]
   end
   resources :leaderboards, only: [:show]
 end
