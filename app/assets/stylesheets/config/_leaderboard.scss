@@ -24,7 +24,7 @@
   margin-bottom: 10px; /* Espace entre le nom et l'image */
 }
 
-.container_bobd{
+.bobd{
 
   text-align: center; /* Centrer le texte à l'intérieur du conteneur */
   color: orange; /* Couleur du texte */
@@ -33,6 +33,7 @@
   border-radius: 8px; /* Bords arrondis pour un effet esthétique */
   width : 300px; /* Largeur du conteneur (ajustez selon vos besoins) */
   height : 150px; /* Hauteur du conteneur (ajustez selon vos besoins) */
-  padding : 20px;
+  padding : 10px;
+  margin: 50px;
 
 }

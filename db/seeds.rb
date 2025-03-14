@@ -1,3 +1,6 @@
+UserGame.destroy_all
+Spell.destroy_all
+
 puts "Creation de l'avatar"
 avatar = Avatar.new(avatar_url:"https://ca.slack-edge.com/T02NE0241-U01BRUL3UTY-1471cb9cc95e-512")
 avatar.save
@@ -69,9 +72,9 @@ questions_data.each do |data|
 end
 
 
-9.times do
+9.times do |i|
   Spell.create!(name: Faker::Games::Pokemon.move,
-              image_url:'',
+              image_url: "img_#{i+1}.jpg",
               description: Faker::Lorem.paragraph(sentence_count: 2))
 end
 
@@ -94,14 +97,14 @@ puts "Données créées avec succès !"
 
 user_game = UserGame.new
 user_game.game = Game.first
-user_game.user = User.find(1)
-user_game.spell = Spell.find(1)
-user_game.category = Category.find(1)
+user_game.user = User.first
+user_game.spell = Spell.first
+user_game.category = Category.first
 user_game.save
 
 user_game = UserGame.new
 user_game.game = Game.first
-user_game.user = User.find(2)
-user_game.spell = Spell.find(2)
-user_game.category = Category.find(2)
+user_game.user = User.second
+user_game.spell = Spell.second
+user_game.category = Category.second
 user_game.save
