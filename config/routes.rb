@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get 'show/:question_index', action: :show, as: :question
       post 'validate_answer'
+      post 'select_spell'
     end
   end
   resources :leaderboards, only: [:show]

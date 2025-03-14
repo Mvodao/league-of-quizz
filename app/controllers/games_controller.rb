@@ -55,8 +55,23 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
     @spells = Spell.all
+    @question = @game.questions[0]
   end
 
   def udpate
   end
+
+  def select_spell
+    @game = Game.find(params[:game_id])
+    @spell = Spell.find(params[:spell_id])
+  end
+
+
+  def start
+    @game = Game.find(params[:id])
+    if @game.spell.nil?
+      redirect_to edit_game_path(@game), alert: "Veuillez sélectionner un spell avant de lancer la partie."
+    end
+  end
+
 end

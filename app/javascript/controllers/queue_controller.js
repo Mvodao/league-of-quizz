@@ -33,7 +33,6 @@ export default class extends Controller {
     // Simule la recherche d'un adversaire avec un délai
     this.timeOut = setTimeout(() => {
       // Mise à jour de l'animation pour signaler qu'un adversaire est trouvé
-      this.findTarget.innerText = "Opponent Found!";
       this.findTarget.classList.add("d-none"); // Masque le bouton "Searching..."
       this.cancelTarget.classList.add("d-none"); // Masque le bouton "Cancel"
       this.challengerimageTarget.classList.remove("empty-cover-image");
@@ -48,7 +47,16 @@ export default class extends Controller {
 
       // Affiche le bouton "Opponent Found!" une fois l'animation terminée
       this.foundButtonTarget.classList.remove("d-none");
-    }, 2000); // Délai de 2 secondes
+
+      // Ajoute un délai avant la redirection automatique
+      setTimeout(() => {
+        if (this.foundButtonTarget.href) {
+          Turbo.visit(this.foundButtonTarget.href);
+        } else {
+          console.error("URL pour la redirection introuvable.");
+        }
+      }, 2000); // Délai supplémentaire de 1 seconde avant la redirection
+    }, 2000); // Délai initial pour la recherche de l'adversaire
   }
 
   cancel(event) {

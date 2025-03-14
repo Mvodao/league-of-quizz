@@ -1,10 +1,9 @@
-
-<div class = "spell-card">
-<%= image_tag spell.image_url %>
+<div class="spell-card">
+  <%= image_tag spell.image_url %>
   <div class="card-content">
-    <h2>
-    <%= spell.name %>
-    </h2>
-
+    <h2><%= spell.name %></h2>
   </div>
+  <%= form_with url: select_spell_game_path(@game), method: :post, local: true do %>
+    <%= hidden_field_tag :spell_id, spell.id %>
+  <% end %>
 </div>

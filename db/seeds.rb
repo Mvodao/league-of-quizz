@@ -1,3 +1,15 @@
+puts "destroying database..."
+
+User.destroy_all
+Avatar.destroy_all
+Category.destroy_all
+Spell.destroy_all
+Answer.destroy_all
+Question.destroy_all
+QuestionsPool.destroy_all
+
+puts "database destroyed... creating datas"
+
 puts "Creation de l'avatar"
 avatar = Avatar.new(avatar_url:"https://ca.slack-edge.com/T02NE0241-U01BRUL3UTY-1471cb9cc95e-512")
 avatar.save
@@ -15,6 +27,14 @@ user.save
 puts "Création des catégories..."
 CATEGORIES = %w[Géographie Divertissement Histoire Art\ &\ Littérature Sciences Sport]
 categories = CATEGORIES.map { |name| Category.create!(name: name) }
+
+puts "Creation des spells"
+
+9.times do |i|
+  Spell.create!(name: Faker::Games::Pokemon.move,
+              image_url:"image_#{i+1}.jpg",
+              description: Faker::Lorem.paragraph(sentence_count: 2))
+end
 
 
 puts "Création des questions et des réponses..."
