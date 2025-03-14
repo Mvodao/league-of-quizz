@@ -1,7 +1,17 @@
-<div class="container justify-content-center" style="color:white;">
-  <h1 class="text-align-center">Game Result</h1>
-  <p>Player 1 Name: <%= @user1.user.username %></p>
-  <p>        score: <%= @user1.score %></p>
-  <p>Player 2 Name: <%= @user2.user.username %></p>
-  <p>        score: <%= @user2.score %></p>
-</div>
+<div class="title text-center pt-4"><h1>Classement Final !!</h1></div>
+  <div class="image-winner">
+      <div class="image-item">
+        <div class='row'><h3><p>Le vainqueur est : <%=@user1.user.username %></p></h3></div>
+        <div class='row'><h3><p>Avec un score de : <%=@user1.score %> Points !</p></h3></div>
+        <%= image_tag('winner.jpg', alt: 'Winner Image')%>
+        <div></div>
+      </div>
+    </div>
+
+
+
+<div class="container mt-4">
+    <h1>Resume</h1>
+  <p><%= @user1.user.username %>   Score: <%= @user1.score %></p>
+  <p> <%= @user2.user.username %>  Score: <%= @user2.score %></p>
+  </div>

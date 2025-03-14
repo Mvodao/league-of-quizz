@@ -32,7 +32,7 @@ class GamesController < ApplicationController
       @next_question = @game.questions[@question_id + 1]
       redirect_to game_question_path(@game, @next_question)
     elsif @answer.is_correct && params[:question_index] = @game.questions.count
-      redirect_to game_leaderboards_path(@game)
+      redirect_to result_game_path(@game)
     else
       flash[:alert] = "Mauvaise réponse ! Essaye encore"
       last_score = @game.user_games.find_by(user: current_user).score
