@@ -1,32 +1,32 @@
 class GamesController < ApplicationController
   def new
-    @game = Game.new
-    Question.all.sample(5).each do |question|
-      question_pool = QuestionsPool.new
-      question_pool.game = @game
-      question_pool.question = question
-      question_pool.save
-    end
+    @game = Game.find(1)
+    # @game = Game.new
+    # Question.all.sample(5).each do |question|
+    #   question_pool = QuestionsPool.new
+    #   question_pool.game = @game
+    #   question_pool.question = question
+    #   question_pool.save
+    # end
 
-    puts "Données créées avec succès !"
+    # puts "Données créées avec succès !"
 
-    user_game = UserGame.new
-    user_game.game = @game
-    user_game.user = User.first
-    user_game.spell = Spell.first
-    user_game.category = Category.first
-    user_game.save
+    # user_game = UserGame.new
+    # user_game.game = @game
+    # user_game.user = User.first
+    # user_game.spell = Spell.first
+    # user_game.category = Category.first
+    # user_game.save
 
-    user_game = UserGame.new
-    user_game.game = @game
-    user_game.user = User.second
-    user_game.spell = Spell.second
-    user_game.category = Category.second
-    user_game.save
+    # user_game = UserGame.new
+    # user_game.game = @game
+    # user_game.user = User.second
+    # user_game.spell = Spell.second
+    # user_game.category = Category.second
+    # user_game.save
   end
 
   def create
-
     redirect_to edit_game_path(@game)
   end
 
