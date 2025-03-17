@@ -42,11 +42,10 @@ export default class extends Controller {
       this.challengertitleTarget.innerText = "Terminator"
 
       setTimeout(() => {
-        // window.location.href = "/games/1/questions/1"
         this.formTarget.submit()
-      }, 2000);
+      }, 4000);
 
-    }, 2000);
+    }, 5000);
   }
 
   cancel(event) {

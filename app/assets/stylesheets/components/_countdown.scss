@@ -1,0 +1,78 @@
+:root {
+  --duration: 5s;
+  --bg: #001823;
+  --color: #cc6c2f;
+  --durationInternal: calc(var(--duration) * 2);
+  --delay: calc(var(--duration) / 2);
+}
+
+// html {
+//   font-size: 1vmin;
+//   background: var(--bg) radial-gradient(closest-corner, rgba(255,255,255,.1), rgba(255,255,255,0));
+//   height: 100%;
+// }
+
+@keyframes rotate {
+  25% { transform: rotate(-135deg); }
+  50% { transform: rotate(-135deg); }
+  75% { transform: rotate(-315deg); }
+  100% { transform: rotate(-315deg); }
+}
+
+@keyframes hide1 {
+  25% { left: -.5em; opacity: 0; }
+  50% { left: 0; opacity: 1; }
+}
+
+@keyframes hide2 {
+  25% { right: -.5em; opacity: 0; }
+  50% { right: 0; opacity: 1; }
+}
+
+@keyframes container {
+  25% { transform: translate3d(0, -50%, 0); width: .5em; }
+  50% { transform: translate3d(-100%, -50%, 0); width: .5em; }
+  75% { transform: translate3d(-50%, -50%, 0); width: 1em; }
+}
+
+.countdown {
+  font-size: 10rem;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  animation: container var(--durationInternal) steps(1) infinite;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    display: block;
+    content: '';
+    box-sizing: border-box;
+    border: .125em solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1em;
+    transform: rotate(45deg);
+    animation-timing-function: linear, steps(1);
+    animation-duration: var(--durationInternal), var(--durationInternal);
+    animation-iteration-count: infinite, infinite;
+  }
+
+  &::before {
+    border-color: transparent transparent var(--color) var(--color);
+    animation-name: rotate, hide1;
+    left: 0;
+  }
+
+  &::after {
+    border-color: var(--color) var(--color) transparent transparent;
+    animation-delay: var(--delay), var(--delay);
+    animation-name: rotate, hide2;
+    right: 0;
+  }
+}
