@@ -23,6 +23,7 @@ export default class extends Controller {
     this.playertitleTarget.classList.add("toggle")
     this.playercharacterTarget.classList.add("toggle")
     this.playerwrapperTarget.classList.add("rotating-wrapper")
+    this.playerwrapperTarget.classList.add("box")
     this.findTarget.innerText = "Searching..."
     this.findTarget.classList.add("btn-hover")
     this.cancelTarget.innerText = "X"
@@ -30,6 +31,7 @@ export default class extends Controller {
 
     this.timeOut = setTimeout(() => {
       this.findTarget.innerText = "Opponent Found!"
+      this.findTarget.disabled = true
       this.cancelTarget.classList.add("d-none")
       this.challengerimageTarget.classList.remove("empty-cover-image")
       this.challengerimageTarget.classList.add("cover-image")
@@ -39,8 +41,8 @@ export default class extends Controller {
       this.challengerwrapperTarget.classList.add("rotating-wrapper-challenger")
       this.challengertitleTarget.classList.add("opponent-title")
       this.challengertitleTarget.classList.remove("challenger-waiting-title")
-      this.challengertitleTarget.innerText = "Terminator"
-
+      this.challengertitleTarget.innerText = "Gaia"
+      this.challengerwrapperTarget.classList.add("box")
       setTimeout(() => {
         this.formTarget.submit()
       }, 4000);
@@ -66,6 +68,8 @@ export default class extends Controller {
     this.challengertitleTarget.classList.remove("opponent-title")
     this.challengertitleTarget.classList.add("challenger-waiting-title")
     this.challengertitleTarget.innerText = "No worthy opponent yet."
+    this.challengerwrapperTarget.classList.remove("box")
+    this.playerwrapperTarget.classList.remove("box")
     clearTimeout(this.timeOut);
   }
 }
