@@ -38,8 +38,8 @@
   transition: all 0.5s;
   position: absolute;
   z-index: 1;
-  bottom: -20px;
-  left: -60px;
+  bottom: -50px;
+  left: -20px;
 }
 
 .opponent-character {
@@ -48,8 +48,8 @@
   transition: all 0.5s;
   position: absolute;
   z-index: 1;
-  bottom: -20px;
-  right: 10px;
+  bottom: -50px;
+  right: -20px;
 }
 
 .player-title {
@@ -62,7 +62,7 @@
   transition: all 0.5s;
   position:absolute;
   bottom: 20px;
-  right: 20px;
+  right: 10px;
   background: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
   background-color: #FAD961;
   background-clip: text;
@@ -82,7 +82,7 @@
   transition: all 0.5s;
   position:absolute;
   bottom: 20px;
-  left: 20px;
+  left: 0;
   background: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
   background-color: #FAD961;
   background-clip: text;
@@ -113,14 +113,15 @@
 }
 
 .rotating-wrapper {
-  transform: perspective(900px) translateY(-5%) rotateX(10deg) translateZ(0);
+  transform: perspective(900px) translateY(-5%) rotateX(5deg) translateZ(0);
   box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  overflow:visible;
 }
 
 .rotating-wrapper-challenger {
-  transform: perspective(900px) translateY(+5%) rotateX(-10deg) translateZ(0);
+  transform: perspective(900px) translateY(+5%) rotateX(-5deg) translateZ(0);
   box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
@@ -128,4 +129,43 @@
 
 .challenger-image {
   filter: grayscale(0);
+}
+
+
+// glowing border
+.box {
+  --border-angle: 0turn; // For animation.
+  --main-bg: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 5%,
+      #112 60%,
+      #213 95%
+    );
+
+  border: solid 10px transparent;
+  --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #000, #cc6c2f 99%, transparent);
+
+  background:
+    // padding-box clip this background in to the overall element except the border.
+    var(--main-bg) padding-box,
+    // border-box extends this background to the border space
+    var(--gradient-border) border-box,
+    // Duplicate main background to fill in behind the gradient border. You can remove this if you want the border to extend "outside" the box background.
+    var(--main-bg) border-box;
+
+  background-position: center center;
+
+  animation: bg-spin 3s linear infinite;
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
 }
