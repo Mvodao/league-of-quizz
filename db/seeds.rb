@@ -1,3 +1,29 @@
+require "csv"
+
+filepath = "db/questions.csv"
+
+puts "Création des catégories..."
+CATEGORIES = %w[Géographie Divertissement Histoire Art\ &\ Littérature Sciences Sport]
+categories = CATEGORIES.map { |name| Category.create!(name: name) }
+
+CSV.foreach(filepath, headers: true) do |row|
+  category = Category.find_by(name: row["Category"])
+  if category
+    question = Question.create!(
+      content: row["Question"],
+      category: category,
+      question_type: "text",
+      media_url: ""
+    )
+    Answer.create!(content: row["Answer"], is_correct: true, question: question)
+    [row["Wrong Answer 1"], row["Wrong Answer 2"], row["Wrong Answer 3"]].each do |wrong_answer|
+      Answer.create!(content: wrong_answer, is_correct: false, question: question)
+    end
+  end
+end
+
+puts "Les questions ont été ajoutées à la base de données !"
+
 puts "Creation de l'avatar"
 avatar = Avatar.new(avatar_url:"https://ca.slack-edge.com/T02NE0241-U01BRUL3UTY-1471cb9cc95e-512")
 avatar.save
@@ -12,9 +38,6 @@ user = User.new(username: "Terminator", first_name:"Bot", last_name:"Combat", em
 user.avatar = avatar
 user.save
 
-puts "Création des catégories..."
-CATEGORIES = %w[Géographie Divertissement Histoire Art\ &\ Littérature Sciences Sport]
-categories = CATEGORIES.map { |name| Category.create!(name: name) }
 
 
 puts "Création des questions et des réponses..."
@@ -59,10 +82,8 @@ questions_data.each do |data|
     category: data[:category]
   )
 
-  # Ajouter la réponse correcte
   Answer.create!(content: data[:correct_answer], is_correct: true, question: question)
 
-  # Ajouter les réponses incorrectes
   data[:wrong_answers].each do |wrong_answer|
     Answer.create!(content: wrong_answer, is_correct: false, question: question)
   end
@@ -82,7 +103,7 @@ games = Game.all
 questions = Question.all
 
 games.each do |game|
-  questions.sample(5).each do |question| # Associe 5 questions aléatoires à chaque jeu
+  questions.sample(10).each do |question|
     question_pool = QuestionsPool.new
     question_pool.game = game
     question_pool.question = question
