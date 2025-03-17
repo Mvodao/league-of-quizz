@@ -11,6 +11,7 @@ class GamesController < ApplicationController
     user_game.user = User.find(params[:user_1])
     user_game.spell = Spell.find(2)
     user_game.category = Category.find(2)
+    user_game.is_used = false
     user_game.save
 
     user_game = UserGame.new
@@ -18,6 +19,7 @@ class GamesController < ApplicationController
     user_game.user = User.find(params[:user_2])
     user_game.spell = Spell.find(1)
     user_game.category = Category.find(1)
+    user_game.is_used = false
     user_game.save
     redirect_to choose_spell_game_path(@game)
   end
@@ -41,6 +43,7 @@ class GamesController < ApplicationController
 
   def score
     @game = Game.find(params[:id])
+    @game.user_games.find_by(user: current_user).update(is_used: params[:bonus_disabled])
     @question_id = params[:question_index].to_i - 1
     @question = @game.questions[@question_id]
     @answer = Answer.find(params[:answer_id])

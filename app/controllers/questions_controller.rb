@@ -5,11 +5,14 @@ class QuestionsController < ApplicationController
     @current_question_index = params[:id].to_i
     @user_games = @game.user_games
 
+    @user_spell = @user_games.find_by(user: current_user).spell
+    @is_used = @user_games.find_by(user: current_user).is_used
+
     if @current_question_index == 1
       @user_games.find_by(user: current_user).update(score: 0)
       @user_games.where.not(user: current_user)[0].update(score: 0)
     end
-    
+
     @question = @questions[@current_question_index-1]
     @answers = @question.answers
 
