@@ -9,9 +9,11 @@ Rails.application.routes.draw do
     #   post 'validate_answer'
     # end
     member do
+      post "add_spell", to:"games#add_spell"
+      post "add_banned_category", to:"games#add_banned_category"
+      get "start", to: "games#start"
       get "result", to:"games#result"
     end
     resources :questions, only: [:show]
-    # resources :leaderboards, only: [:index]
   end
 end
