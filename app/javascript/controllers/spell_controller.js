@@ -16,11 +16,12 @@ export default class extends Controller {
       card.addEventListener("click",(event) => {
         if (card.classList.contains("card-selected")) {
           card.classList.remove("card-selected")
+          this.spellidTarget.value = ""
         } else {
           card.classList.add("card-selected");
           this.spellidTarget.value = card.id
-          this.spellModalBtnTarget.click()
-          this.spellDescriptionModalTarget.innerText = this.spellDescriptionTarget.innerText
+          // this.spellModalBtnTarget.click()
+          // this.spellDescriptionModalTarget.innerText = this.spellDescriptionTarget.innerText
           // this.spellNameModalTarget.innerText = this.spellNameTarget.innerText
         }
         cards.forEach(element => {
@@ -32,7 +33,17 @@ export default class extends Controller {
       })
     }
 
-    fire(){
-      this.formTarget.submit()
+    fire(event){
+      event.preventDefault()
+      if (this.spellidTarget.value ==="") {
+        console.log("value empty")
+        this.formTarget.classList.add("giggle")
+        setTimeout(() => {
+          this.formTarget.classList.remove("giggle");
+        }, 1000);
+
+      } else {
+        this.formTarget.submit()
+      }
     }
   }

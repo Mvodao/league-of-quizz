@@ -1,5 +1,5 @@
 .success-modal {
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), image-url("success.webp");
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), image-url("win2.webp");
   background-size: cover;
   background-position: center;
   // height:300px;
@@ -13,7 +13,7 @@
 }
 
 .lose-modal {
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), image-url("lose.webp");
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), image-url("lose2.webp");
   background-size: cover;
   background-position: center;
   // height:300px;
@@ -40,7 +40,7 @@
   font-size:32px;
   text-align:center;
 
-  &p {
+  .spell-modal-description {
     font-style: italic;
   }
 }

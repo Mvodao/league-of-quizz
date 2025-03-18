@@ -44,7 +44,7 @@
           <%= f.hidden_field :answer_id, value: answer.id %>
           <%= f.hidden_field :bonus_disabled, value: false, data: {bonus_target: "bonusDisabled"} %>
           <%= f.hidden_field :question_index, value: @current_question_index %>
-          <%= f.submit answer.content, class: "btn answer-button" %>
+          <%= f.submit answer.content, class: "btn answer-button", data: {modal_target:"submitBtn#{index}"} %>
         <% end %>
       <% end %>
     </div>
