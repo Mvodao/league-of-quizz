@@ -3,7 +3,6 @@
     <% @spells.each do |spell| %>
       <div class="col-4">
         <%= render "spell", spell: spell %>
-        <%= render "modalspell", spell: spell %>
       </div>
     <% end %>
     <%= form_with(url: add_spell_game_path(@game), method: :post, data: { spell_target:"form", action:"submit->spell#fire", turbo: false}) do |f| %>

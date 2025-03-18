@@ -7,7 +7,11 @@ export default class extends Controller {
                     "sub2",
                     "sub3",
                     "sub4",
-                    "playerscore"]
+                    "playerscore",
+                    "submitBtn1",
+                    "submitBtn2",
+                    "submitBtn3",
+                    "submitBtn4"]
 
   static values = {
     iscorrect: String
@@ -43,11 +47,11 @@ export default class extends Controller {
         this.sub1Target.submit()
       }, 3000);
     } else {
-      this.sub1Target.classList.add("error");
+      this.submitBtn1Target.classList.add("error");
       this.playerscoreTarget.innerText = parseInt(this.playerscoreTarget.innerText)-1
       this.sub1Target.submit()
       setTimeout(() => {
-        this.sub1Target.classList.remove("error");
+        this.submitBtn1Target.classList.remove("error");
       }, 600); // Temps total de l'animation
     }
   }
@@ -60,11 +64,11 @@ export default class extends Controller {
         this.sub2Target.submit()
       }, 3000);
     } else {
-      this.sub2Target.classList.add("error");
+      this.submitBtn2Target.classList.add("error");
       this.playerscoreTarget.innerText = parseInt(this.playerscoreTarget.innerText)-1
       this.sub2Target.submit()
       setTimeout(() => {
-        this.sub2Target.classList.remove("error");
+        this.submitBtn2Target.classList.remove("error");
       }, 600); // Temps total de l'animation
     }
   }
@@ -77,11 +81,11 @@ export default class extends Controller {
         this.sub3Target.submit()
       }, 3000);
     } else {
-      this.sub3Target.classList.add("error");
+      this.submitBtn3Target.classList.add("error");
       this.playerscoreTarget.innerText = parseInt(this.playerscoreTarget.innerText)-1
       this.sub3Target.submit()
       setTimeout(() => {
-        this.sub3Target.classList.remove("error");
+        this.submitBtn3Target.classList.remove("error");
       }, 600); // Temps total de l'animation
     }
   }
@@ -95,11 +99,11 @@ export default class extends Controller {
       }, 3000);
 
     } else {
-      this.sub4Target.classList.add("error");
+      this.submitBtn4Target.classList.add("error");
       this.playerscoreTarget.innerText = parseInt(this.playerscoreTarget.innerText)-1
       this.sub4Target.submit()
       setTimeout(() => {
-        this.sub4Target.classList.remove("error");
+        this.submitBtn4Target.classList.remove("error");
       }, 600); // Temps total de l'animation
     }
   }
