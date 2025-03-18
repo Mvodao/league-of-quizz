@@ -3,7 +3,7 @@ require "csv"
 filepath = "db/questions.csv"
 
 puts "Création des catégories..."
-CATEGORIES = %w[Géographie Divertissement Histoire Art\ &\ Littérature Sciences Sport]
+CATEGORIES = %w[Geography Entertainment History Art\ &\ Literature Sciences Sport]
 categories = CATEGORIES.map { |name| Category.create!(name: name) }
 
 CSV.foreach(filepath, headers: true) do |row|
