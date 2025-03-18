@@ -26,18 +26,52 @@ class GamesController < ApplicationController
 
   def start
     @game = Game.find(params[:id])
-    Game.first.questions.each do |question|
-      QuestionsPool.create(game: @game, question: question)
+    if @game.user_games.count == 2
+      Game.first.questions.each do |question|
+        QuestionsPool.create(game: @game, question: question)
+      end
+    else
+      category = @game.user_games.find_by(user: current_user).category
+      questions = Question.where(category: category)
+      questions.sample(5).each do |question|
+        QuestionsPool.create(game: @game, question: question)
+      end
     end
   end
 
   def update
+    @game = Game.find(params[:id])
     if params.key?(:question_id)
-      score
+      if @game.user_games.count == 2
+        quick_play_score
+      else
+        training_score
+      end
     end
   end
 
-  def score
+  def training_score
+    @game = Game.find(params[:id])
+    @question_id = params[:question_index].to_i - 1
+    @question = @game.questions[@question_id]
+    @answer = Answer.find(params[:answer_id])
+    @is_correct = @answer.is_correct
+    if @is_correct
+      last_score = @game.user_games.find_by(user: current_user).score
+      @game.user_games.find_by(user: current_user).update(score: last_score + 1)
+      @next_question = params[:question_index].to_i + 1
+      if  @next_question > @game.questions.count
+        redirect_to result_game_path(@game)
+      else
+        redirect_to game_question_path(@game, @next_question)
+      end
+    else
+      last_score = @game.user_games.find_by(user: current_user).score
+      @game.user_games.find_by(user: current_user).update(score: last_score - 1)
+    end
+  end
+
+  def quick_play_score
     @game = Game.find(params[:id])
     @game.user_games.find_by(user: current_user).update(is_used: params[:bonus_disabled])
     @question_id = params[:question_index].to_i - 1
