@@ -69,26 +69,50 @@ questions_data.each do |data|
 end
 
 
-9.times do |i|
-  Spell.create!(name: Faker::Games::Pokemon.move,
-              image_url: "img_#{i+1}.jpg",
-              description: Faker::Lorem.paragraph(sentence_count: 2))
-end
+# 9.times do |i|
+#   Spell.create!(name: Faker::Games::Pokemon.move,
+#               image_url: "img_#{i+1}.jpg",
+#               description: Faker::Lorem.paragraph(sentence_count: 2))
+# end
+#
+Spell.create!(name: "fifty-fifty",
+image_url:"spells/fifty-fifty.webp",
+description: "The system removes two incorrect answers, leaving one correct and one incorrect option.")
+
+Spell.create!(name: "plus10sec",
+image_url:"spells/plus10sec.webp",
+description: "The player gains an additional 10 seconds to answer.")
+
+Spell.create!(name: "minus10sec",
+image_url:"spells/minus10sec.webp",
+description: "The opponent’s response time is significantly shortened. (minus 10 sec)")
+
+Spell.create!(name: "hidden-answer",
+image_url:"spells/hidden-answer.webp",
+description: "The opponent’s answers are masked, requiring them to hover over each one to reveal it.")
+
+Spell.create!(name: "double-answer",
+image_url:"spells/double-answer.webp",
+description: "The player can select two answers instead of one to increase their chances.")
+
+Spell.create!(name: "blury-answer",
+image_url:"spells/blury-answer.webp",
+description: "The opponent’s screen is partially blurred or glitched for a few seconds.")
 
 Game.create!
 
 puts "Création des relations questions-jeux..."
-games = Game.all
+game = Game.first
 questions = Question.all
 
-games.each do |game|
-  questions.sample(5).each do |question| # Associe 5 questions aléatoires à chaque jeu
-    question_pool = QuestionsPool.new
-    question_pool.game = game
-    question_pool.question = question
-    question_pool.save
-  end
+
+questions.sample(5).each do |question| # Associe 5 questions aléatoires à chaque jeu
+  question_pool = QuestionsPool.new
+  question_pool.game = game
+  question_pool.question = question
+  question_pool.save
 end
+
 
 puts "Données créées avec succès !"
 
