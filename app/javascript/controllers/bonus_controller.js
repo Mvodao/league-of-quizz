@@ -32,7 +32,7 @@ export default class extends Controller {
 
   applybonus() {
     const forms = this.formsTarget.querySelectorAll("form")
-    if (this.bnameValue !== "None") {
+    if (this.bnameValue === "fifty-fifty") {
       this.fiftyfifty(forms)
     }
   }

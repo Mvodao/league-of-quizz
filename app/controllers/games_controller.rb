@@ -27,12 +27,8 @@ class GamesController < ApplicationController
   def start
     @game = Game.find(params[:id])
     Game.first.questions.each do |question|
-      pools = QuestionsPool.new
-      pools.game = @game
-      pools.question = question
-      pools.save
+      QuestionsPool.create(game: @game, question: question)
     end
-    # redirect_to game_question_path(@game, 1)
   end
 
   def update

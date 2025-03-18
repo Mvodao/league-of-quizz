@@ -25,3 +25,31 @@
   font-size:32px;
   text-align:center;
 }
+
+
+.spell-modal {
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), image-url("spells/background-spell-description.webp");
+  background-size: cover;
+  background-position: center;
+  // height:300px;
+  color:white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size:32px;
+  text-align:center;
+
+  &p {
+    font-style: italic;
+  }
+}
+
+.btn-close-modal {
+  color:red;
+  background-color:transparent;
+  position:absolute;
+  top:0;
+  right:15px;
+  font-size: 24px;
+}

@@ -2,7 +2,13 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="spell"
 export default class extends Controller {
-  static targets = ["form", "spellid"]
+  static targets = ["form",
+    "spellid",
+    "spellModalBtn",
+    "spellDescriptionModal",
+    "spellDescription",
+    "spellName",
+    "spellNameModal"]
 
   connect() {
     const cards = document.querySelectorAll('.spell-card');
@@ -12,11 +18,12 @@ export default class extends Controller {
           card.classList.remove("card-selected")
         } else {
           card.classList.add("card-selected");
-          console.log(card.id)
           this.spellidTarget.value = card.id
+          this.spellModalBtnTarget.click()
+          this.spellDescriptionModalTarget.innerText = this.spellDescriptionTarget.innerText
+          // this.spellNameModalTarget.innerText = this.spellNameTarget.innerText
         }
         cards.forEach(element => {
-
           if (element !== card) {
             element.classList.remove("card-selected");
           }
@@ -26,7 +33,6 @@ export default class extends Controller {
     }
 
     fire(){
-
       this.formTarget.submit()
     }
   }

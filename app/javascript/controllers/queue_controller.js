@@ -45,9 +45,9 @@ export default class extends Controller {
       this.challengerwrapperTarget.classList.add("box")
       setTimeout(() => {
         this.formTarget.submit()
-      }, 4000);
+      }, 10);
 
-    }, 5000);
+    }, 10);
   }
 
   cancel(event) {
