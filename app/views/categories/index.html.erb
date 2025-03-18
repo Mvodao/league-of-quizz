@@ -1,0 +1,11 @@
+<div class="categories row overflow-hidden" data-controller="category" style = "color:white;">
+    <span class= "title">Please choose a malus or a bonus</span>
+    <% @categories.each do |category| %>
+      <div class="card">
+      <div class="col-12">
+        <%= render "category", category: category %>
+        </div>
+      </div>
+      <% end %>
+
+</div>
