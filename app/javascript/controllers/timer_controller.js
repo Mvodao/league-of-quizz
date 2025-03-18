@@ -18,7 +18,7 @@ export default class extends Controller {
       this.updateTimer();
     } else {
       clearInterval(this.interval);
-      this.timeUp(); // Action lorsque le temps est écoulé
+      // this.timeUp(); // Action lorsque le temps est écoulé
     }
   }
 

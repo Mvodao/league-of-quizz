@@ -14,6 +14,44 @@
     <%= javascript_importmap_tags %>
   </head>
 
+<%# <script>
+  document.addEventListener("turbo:before-visit", (event) => {
+    const overlay = document.getElementById("transition-overlay");
+    if (!overlay) return;
+
+    event.preventDefault(); // Empêche la navigation immédiate
+
+    overlay.classList.remove("hiddenanim");
+    overlay.classList.add("closing-vortex");
+
+    console.log("Début de l'animation de fermeture");
+
+    // Déclencher Turbo après l'animation
+    setTimeout(() => {
+      console.log("Forçage de la navigation vers : ", event.detail.url);
+      Turbo.visit(event.detail.url);
+    }, 800); // Même durée que l'animation CSS
+  });
+
+  document.addEventListener("turbo:load", () => {
+    const overlay = document.getElementById("transition-overlay");
+    if (!overlay) return;
+
+    overlay.classList.add("opening-vortex");
+
+    console.log("Début de l'animation d'ouverture");
+
+    setTimeout(() => {
+      overlay.classList.remove("opening-vortex", "closing-vortex");
+      overlay.classList.add("hiddenanim");
+
+      console.log("Fin de l'animation d'ouverture");
+    }, 800); // Même durée que l'animation CSS
+  });
+</script> %>
+
+
+
   <body>
     <div id="star-background">
     <div id='stars'></div>
@@ -23,5 +61,6 @@
         <%= render "shared/flashes" %>
         <%= yield %>
     <%# </div> %>
+    <div id="transition-overlay" class="vortex-overlay hiddenanim"></div>
   </body>
 </html>

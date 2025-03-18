@@ -1,4 +1,4 @@
-<div class="container" data-controller="modal">
+<div class="container" data-controller="modal bonus" data-bonus-bname-value="<%= @is_used ? "None" : @user_spell.name %>">
   <% if @question.nil? %>
     <h3 class="text-center">Vous avez terminé toutes les questions !</h3>
     <div class="text-center">
@@ -8,12 +8,17 @@
     <div class="progress">
       <div class="progress-bar pt-4" role="progressbar" style="width: <%= @progress_percentage %>%;" aria-valuenow="<%= @progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="score d-flex justify-content-center flex-column align-items-center mt-3">
-      <div>
-        Your Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
+    <div class="score d-flex justify-content-between mt-3">
+      <div class="flex-column align-items-start">
+        <div>
+          Your Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
+        </div>
+        <div>
+          Your Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
+        </div>
       </div>
-      <div>
-        Your Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
+      <div class="d-flex align-items-center mx-3">
+        <button class="btn btn-bonus" data-action="click->bonus#applybonus" data-bonus-target="btn" >Bonus</button>
       </div>
     </div>
     <div class="question-box text-center">
@@ -24,7 +29,7 @@
         <h3><%= @question.content %></h3>
       </div>
     </div>
-    <div class="answer-box d-flex flex-column align-items-center">
+    <div class="answer-box d-flex flex-column align-items-center" data-bonus-target="forms">
       <% index = 0 %>
       <% @answers.each_with_index do |answer, a_index| %>
         <% index = 0 if a_index%4 == 0 %>
@@ -33,6 +38,7 @@
         <%= form_with(url: game_path(@game), class:"answer_#{answer.is_correct.to_s}",method: :patch, data: { modal_target:"sub#{index}", action: "submit->modal#fire#{index}"}) do |f| %>
           <%= f.hidden_field :question_id, value: @question.id %>
           <%= f.hidden_field :answer_id, value: answer.id %>
+          <%= f.hidden_field :bonus_disabled, value: false, data: {bonus_target: "bonusDisabled"} %>
           <%= f.hidden_field :question_index, value: @current_question_index %>
           <%= f.submit answer.content, class: "btn answer-button" %>
         <% end %>
@@ -47,7 +53,7 @@
     <div class="modal-dialog modal-fullscreen-sm-down">
       <div class="modal-content">
         <div id="questionmodal" class="modal-body success-modal" data-modal-target="modaldiv">
-          Woouh such speed! You answered correctly first!
+          Your were faster than your opponnent!
         </div>
       </div>
     </div>

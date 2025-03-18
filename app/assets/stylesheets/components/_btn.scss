@@ -33,6 +33,7 @@
   top: calc(100vh/2 - 25px);
   left: calc(100vw/2 - 130px);
 }
+
 .btn-find-opponent {
   // border-radius: 20px;
   font-size: 28px;
@@ -45,10 +46,47 @@
     // color: white;
     background-color: $dark-orange;
     border-color: $dark-orange;
+    color: white;
+  }
+
+  &:disabled {
+    font-size: 28px;
+    z-index:100;
+    border-color: $dark-orange;
+    color: white;
+    font-weight: bold;
+    background-color: $dark-orange;
+    opacity: 0.9;
   }
 }
 
 .btn-hover {
   background-color: $dark-orange;
   border-color: $dark-orange;
+}
+
+.btn-bonus {
+  // border-radius: 20px;
+  font-size: 28px;
+  z-index:100;
+  border-color: $dark-orange;
+  color: $light-orange;
+  font-weight: bold;
+
+  &:hover {
+    // color: white;
+    background-color: $dark-orange;
+    border-color: $dark-orange;
+    color: white;
+  }
+
+  &:disabled {
+    font-size: 28px;
+    z-index:100;
+    border-color: $dark-orange;
+    color: white;
+    font-weight: bold;
+    background-color: none;
+    opacity: 0.9;
+  }
 }

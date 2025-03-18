@@ -1,18 +1,19 @@
 <div class="container" data-controller="queue">
+  <div class="animated-border-box-glow"></div>
   <div class="player-card">
     <%= render "playercard",
-        background: "player-cards/dark-rider-169.webp",
+        background: "player-cards/background.webp",
         background_class: "cover-image",
-        character: "player-cards/dark-rider-character.png",
+        character: "player-cards/player1.png",
         character_class: "player-character",
         title_class: "player-title",
-        title: "Bob Dylan" %>
+        title: "Hercule" %>
   </div>
   <div class="player-card">
     <%= render "challengercard",
-        background: "player-cards/dark-rider-169.webp",
+        background: "player-cards/background.webp",
         background_class: "empty-cover-image",
-        character: "player-cards/force-mage-character.webp",
+        character: "player-cards/player2.png",
         character_class: "opponent-character",
         title_class: "challenger-waiting-title",
         title: "No worthy opponent yet." %>
@@ -22,6 +23,10 @@
     <button type="button" class="btn btn-outline-success btn-find-opponent" data-action="click->queue#find_opponent" data-queue-target="find">Find an opponent</button>
     <button type="button" class="btn btn-outline-success btn-find-opponent d-none" data-action="click->queue#cancel" data-queue-target="cancel">X</button>
   </div>
-  <%# <div class="btn btn-outline-success btn-find-opponent" data-action="click->queue#find_opponent">Find an opponent</div> %>
+    <%= form_with(url: games_path, method: :post, class:"visibility-hidden", data: { queue_target:"form"}) do |f| %>
+      <%= f.hidden_field :user_1, value: @current_user.id %>
+      <%= f.hidden_field :user_2, value: User.find(2).id %>
+      <%= f.submit%>
+    <% end %>
   </div>
 </div>

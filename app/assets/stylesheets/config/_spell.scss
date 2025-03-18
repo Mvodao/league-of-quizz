@@ -84,25 +84,27 @@ text-align: center;
 }
 
 .title{
-
-color: white;
-font-size: 30px;
-margin-bottom: 20px;
-
+  color: white;
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .spell-card {
 
-  height: 100px;
-  width: 100px;
-  border: 10px solid white;
+  height: 120px;
+  width: 100%;
+  border: 3px solid white;
   margin-bottom: 30px;
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
   color: $color-primary-white;
   box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  display:flex;
+  justify-content: center;
+  align-items:end;
 
 
 
@@ -118,13 +120,14 @@ margin-bottom: 20px;
 
   h2 {
     position: absolute;
-    inset: auto auto 10px 20px;
+    // inset: auto auto 3px 0px;
     margin: 0 auto;
     transition: inset .3s .3s ease-out;
     font-family: 'Roboto Condensed', sans-serif;
-    font-weight: normal;
+    font-weight: bold;
     text-transform: uppercase;
-    font-size: 16px
+    font-size: 16px;
+    color: white;
   }
 
   p, a {
@@ -145,7 +148,7 @@ margin-bottom: 20px;
   }
 
   &:hover h2 {
-    inset: auto auto 160px 30px;
+    inset: auto auto 10px auto;
     transition: inset .3s ease-out;
   }
 
@@ -167,5 +170,11 @@ margin-bottom: 20px;
 
 
 .card-selected {
-  border: 10px solid rgb(255, 0, 0);
+  border: 5px solid rgb(255, 0, 0);
+}
+
+.card-content {
+  display:flex;
+  justify-content:center;
+  align-items:end;
 }
