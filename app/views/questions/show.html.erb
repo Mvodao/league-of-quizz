@@ -1,4 +1,4 @@
-<div class="container" data-controller="modal bonus" data-bonus-bname-value="<%= @is_used ? "None" : @user_spell.name %>">
+<div class="container" data-controller="modal bonus" data-bonus-bname-value="<%= @is_used ? "None" : @user_spell&.name %>" data-modal-quickplay-value="<%= @quickplay %>">
   <% if @question.nil? %>
     <h3 class="text-center">Vous avez terminé toutes les questions !</h3>
     <div class="text-center">
@@ -13,13 +13,17 @@
         <div>
           Your Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
         </div>
+        <% if @game.user_games.count == 2 %>
         <div>
           Your Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
         </div>
+        <% end %>
       </div>
+     <% if @game.user_games.count == 2 %>
       <div class="d-flex align-items-center mx-3">
         <button class="btn btn-bonus" data-action="click->bonus#applybonus" data-bonus-target="btn" >Bonus</button>
       </div>
+      <% end %>
     </div>
     <div class="question-box text-center">
       <div class="image-placeholder">
