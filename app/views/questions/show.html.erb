@@ -35,7 +35,7 @@
     </div>
     <div class="answer-box d-flex flex-column align-items-center" data-bonus-target="forms">
       <% index = 0 %>
-      <% @answers.each_with_index do |answer, a_index| %>
+      <% @answers.shuffle.each_with_index do |answer, a_index| %>
         <% index = 0 if a_index%4 == 0 %>
         <div class="visually-hidden"></div>
         <% index += 1 %>
