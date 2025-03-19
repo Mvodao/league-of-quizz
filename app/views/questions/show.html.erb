@@ -8,7 +8,7 @@
     <div class="progress">
       <div class="progress-bar pt-4" role="progressbar" style="width: <%= @progress_percentage %>%;" aria-valuenow="<%= @progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="score d-flex justify-content-between mt-3">
+    <div class="d-flex justify-content-between mt-3">
       <div class="flex-column align-items-start">
         <div class="score-container">
             Player Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>

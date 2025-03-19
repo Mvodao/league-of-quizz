@@ -87,10 +87,7 @@
 .score {
   color:white;
 }
-//  .answer-button:hover {
-//   transform: scale(1.05);
-//   transition: transform 0.2s ease-in-out;
-// }
+
 
 .progress-bar {
   background-color: #4caf50;
@@ -106,21 +103,11 @@
   font-family: 'Press Start 2P', cursive; // Ajoute cette police dans ton projet
   font-size: 0.8rem;
   color: $light-orange;
-  text-shadow: 2px 2px 0px black, -2px -2px 0px black;
+
 }
 
 
 @keyframes floatUp {
   0% { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(-20px); }
-}
-
-.score-popup {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.2rem;
-  color: #ffeb3b;
-  animation: floatUp 1s ease-out forwards;
 }

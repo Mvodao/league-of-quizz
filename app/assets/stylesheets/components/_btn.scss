@@ -83,11 +83,12 @@
 
 .btn-bonus {
   // border-radius: 20px;
-  font-size: 28px;
+  font-size: 14px;
   z-index:100;
   border-color: $dark-orange;
   color: $light-orange;
   font-weight: bold;
+  border-radius: 15px;
 
   &:hover {
     // color: white;
