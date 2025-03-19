@@ -98,10 +98,9 @@
   }
 
   &:disabled {
-    font-size: 28px;
     z-index:100;
     border-color: $dark-orange;
-    color: white;
+    color: red;
     font-weight: bold;
     background-color: none;
     opacity: 0.9;

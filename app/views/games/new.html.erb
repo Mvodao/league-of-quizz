@@ -23,10 +23,11 @@
     <button type="button" class="btn btn-outline-success btn-find-opponent" data-action="click->queue#find_opponent" data-queue-target="find">Find an opponent</button>
     <button type="button" class="btn btn-outline-success btn-find-opponent d-none" data-action="click->queue#cancel" data-queue-target="cancel">X</button>
   </div>
-    <%= form_with(url: games_path, method: :post, class:"visibility-hidden", data: { queue_target:"form"}) do |f| %>
+  <div class="visually-hidden">
+    <%= form_with(url: games_path, method: :post, data: { queue_target:"form"}) do |f| %>
       <%= f.hidden_field :user_1, value: @current_user.id %>
       <%= f.hidden_field :user_2, value: User.find(2).id %>
-      <%= f.submit%>
+      <%= f.submit %>
     <% end %>
   </div>
 </div>
