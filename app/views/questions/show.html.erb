@@ -10,12 +10,12 @@
     </div>
     <div class="score d-flex justify-content-between mt-3">
       <div class="flex-column align-items-start">
-        <div>
-          Your Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
+        <div class="score-container">
+            Player Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
         </div>
         <% if @game.user_games.count == 2 %>
-        <div>
-          Your Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
+        <div class="score-container">
+            Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
         </div>
         <% end %>
       </div>
