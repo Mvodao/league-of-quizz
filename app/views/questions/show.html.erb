@@ -8,14 +8,14 @@
     <div class="progress">
       <div class="progress-bar pt-4" role="progressbar" style="width: <%= @progress_percentage %>%;" aria-valuenow="<%= @progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="score d-flex justify-content-between mt-3">
+    <div class="d-flex justify-content-between mt-3">
       <div class="flex-column align-items-start">
-        <div>
-          Your Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
+        <div class="score-container">
+            Player Score: <span data-modal-target="playerscore"><%= @user_games.find_by(user: current_user).score %></span>
         </div>
         <% if @game.user_games.count == 2 %>
-        <div>
-          Your Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
+        <div class="score-container">
+            Opponent Score: <span><%= @user_games.where.not(user: current_user)[0].score %></span>
         </div>
         <% end %>
       </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="answer-box d-flex flex-column align-items-center" data-bonus-target="forms">
       <% index = 0 %>
-      <% @answers.each_with_index do |answer, a_index| %>
+      <% @answers.shuffle.each_with_index do |answer, a_index| %>
         <% index = 0 if a_index%4 == 0 %>
         <div class="visually-hidden"></div>
         <% index += 1 %>
@@ -63,6 +63,6 @@
     </div>
   </div>
   <div class="d-flex justify-content-center mt-2" data-controller="timer" data-timer-duration-value="30">
-    <h3 data-timer-target="timer" class="timer">30 secondes restantes</h3>
+    <span data-timer-target="timer" id="clock" > secondes restantes</span>
   </div>
 </div>

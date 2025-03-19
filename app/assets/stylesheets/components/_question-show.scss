@@ -51,18 +51,20 @@
   // border: 2px solid black;
   // background-color: green;
   // color: white;
+  font-family: "Saira Stencil One", sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 10px;
   margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 300px;
   border-color: $dark-orange;
   color: $light-orange;
 
   &:hover {
     // color: white;
-    background-color: $dark-orange;
+    background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+    background-size:200% auto;
     border-color: 2px solid $dark-orange;
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
@@ -85,10 +87,7 @@
 .score {
   color:white;
 }
-//  .answer-button:hover {
-//   transform: scale(1.05);
-//   transition: transform 0.2s ease-in-out;
-// }
+
 
 .progress-bar {
   background-color: #4caf50;
@@ -97,4 +96,18 @@
 
 .timer {
   color:white;
+}
+
+
+.score-container {
+  font-family: 'Press Start 2P', cursive; // Ajoute cette police dans ton projet
+  font-size: 0.8rem;
+  color: $light-orange;
+
+}
+
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
 }

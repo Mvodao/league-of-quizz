@@ -4,13 +4,15 @@
   height: calc(3*100vh/4);
   width: calc(100vw/1.8);
   top: calc(100vh/3.5);
-  left: calc(100vw/2 - 100vw/1.8/2);
+  // left: calc(100vw/2 - 100vw/1.8/2);
   display:flex;
   flex-direction: column;
 }
 
 .btn-home {
+  font-family: "Saira Stencil One", sans-serif;
   background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  background-size:200% auto;
   margin-top: 25px;
   height: calc(100vh/8);
   border-radius: 15px;
@@ -24,7 +26,7 @@
   box-shadow: 0 0 5px #eee;
   text-decoration: none;
   transition: 0.5s;
-  background-size:200% auto;
+
 
   &:hover {
     // color: white;
@@ -33,6 +35,7 @@
     border-color: $dark-orange;
     color:black;
   }
+
 }
 
 .btn-group-find-opponent {
@@ -42,18 +45,24 @@
 }
 
 .btn-find-opponent {
+  font-family: "Saira Stencil One", sans-serif;
   // border-radius: 20px;
   font-size: 28px;
   z-index:100;
   border-color: $dark-orange;
   color: $light-orange;
   font-weight: bold;
+  font-family: "Saira Stencil One", sans-serif;
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  background-size:200% auto;
+  border-radius: 15px;
 
   &:hover {
     // color: white;
-    background-color: $dark-orange;
+    background-position: right center; /* change the direction of the change here */
+    // background-color: $dark-orange;
     border-color: $dark-orange;
-    color: white;
+    color:black;
   }
 
   &:disabled {
@@ -74,11 +83,12 @@
 
 .btn-bonus {
   // border-radius: 20px;
-  font-size: 28px;
+  font-size: 14px;
   z-index:100;
   border-color: $dark-orange;
   color: $light-orange;
   font-weight: bold;
+  border-radius: 15px;
 
   &:hover {
     // color: white;
@@ -123,4 +133,47 @@
 
 .giggle {
   animation: giggle 0.3s ease-in-out 3; /* 3 répétitions */
+}
+
+
+.btn-category {
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  background-size:200% auto;
+  font-size: 16px;
+  z-index:100;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  transition: 0.3s ease-in;
+  margin-bottom: 10px;
+  &:hover {
+    // text-decoration: underline;
+    // text-decoration-color: $dark-orange;
+    // text-decoration-thickness: 5px;
+    color:black;
+    background-position: right center; /* change the direction of the change here */
+    // background-color: $dark-orange;
+    border-color: $dark-orange;
+  }
+}
+
+.btn-spell-confirm {
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  background-size:200% auto;
+  font-size: 32px;
+  z-index:100;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  transition: 0.3s ease-in;
+  margin-bottom: 10px;
+  &:hover {
+    // text-decoration: underline;
+    // text-decoration-color: $dark-orange;
+    // text-decoration-thickness: 5px;
+    color:black;
+    background-position: right center; /* change the direction of the change here */
+    // background-color: $dark-orange;
+    border-color: $dark-orange;
+  }
 }

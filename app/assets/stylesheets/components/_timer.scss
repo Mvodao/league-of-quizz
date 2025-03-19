@@ -1,0 +1,11 @@
+#clock {
+  font-family: 'Share Tech Mono', monospace;
+  background-image: linear-gradient(to right, #FF522F 0%, #F09819  51%, #FF512F  100%);
+  font-weight: bold;
+  font-style: italic;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgb(230, 116, 10),  0 0 20px rgba(10, 175, 230, 0);
+  font-size: 24px;
+}
