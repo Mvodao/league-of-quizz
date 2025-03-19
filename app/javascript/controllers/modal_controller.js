@@ -26,7 +26,7 @@ export default class extends Controller {
         setTimeout(() => {
           this.modaldivTarget.classList.remove("success-modal")
           this.modaldivTarget.classList.add("lose-modal")
-          this.modaldivTarget.innerText = "Your opponent was fatest!"
+          this.modaldivTarget.innerText = "Your opponent was faster than you!"
           this.modalbtnTarget.click()
           setTimeout(() => {this.sub1Target.submit()}, 3000)
         }, 3000);

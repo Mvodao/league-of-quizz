@@ -101,6 +101,8 @@ class GamesController < ApplicationController
     elsif params[:question_index].to_i == 4 && !@is_correct
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score - 1)
+      @next_question = params[:question_index].to_i + 1
+      redirect_to game_question_path(@game, @next_question)
     else
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score + 1)
