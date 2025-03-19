@@ -61,7 +61,7 @@ class GamesController < ApplicationController
       @game.user_games.find_by(user: current_user).update(score: last_score + 1)
       @next_question = params[:question_index].to_i + 1
       if  @next_question > @game.questions.count
-        redirect_to result_game_path(@game)
+        redirect_to result_training_game_path(@game)
       else
         redirect_to game_question_path(@game, @next_question)
       end
@@ -113,5 +113,10 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @user1 = @game.user_games.find_by(user: current_user)
     @user2 = @game.user_games.where.not(user: current_user)[0]
+  end
+
+  def training_result
+    @game = Game.find(params[:id])
+    @current_user = @game.user_games.find_by(user: current_user)
   end
 end
