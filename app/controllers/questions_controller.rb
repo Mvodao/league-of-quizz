@@ -9,17 +9,14 @@ class QuestionsController < ApplicationController
     @quickplay = false
 
     if @current_question_index == 1
-<<<<<<< HEAD
       @user = @user_games.find_by(user: current_user).update(score: 0)
-=======
       @user = @game.user_games.find_by(user: current_user).update(score: 0)
->>>>>>> master
       #si y a un 2e user faire la ligne en dessous
       if @game.user_games.count == 2
         @user_games.where.not(user: current_user)[0].update(score: 0)
       end
     end
-    
+
     if @game.user_games.count == 2
       @quickplay = true
     end
