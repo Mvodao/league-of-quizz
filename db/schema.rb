@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_17_141202) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_19_091255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_17_141202) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
   end
 
   create_table "games", force: :cascade do |t|
@@ -65,6 +66,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_17_141202) do
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_questions_pools_on_game_id"
     t.index ["question_id"], name: "index_questions_pools_on_question_id"
+  end
+
+  create_table "solid_cable_messages", force: :cascade do |t|
+    t.text "channel"
+    t.text "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel"], name: "index_solid_cable_messages_on_channel"
+    t.index ["created_at"], name: "index_solid_cable_messages_on_created_at"
   end
 
   create_table "spells", force: :cascade do |t|

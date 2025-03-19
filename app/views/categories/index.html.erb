@@ -1,11 +1,11 @@
-<div class="categories row overflow-hidden" data-controller="category" style = "color:white;">
-    <span class= "title">Please choose a malus or a bonus</span>
+<div class="d-flex justify-content-center">
+  <span class= "cat-title">Pick a category to start the game!</span>
+  <%# <%= image_tag "pick_a_category", class:"cat-img"%>
+</div>
+<div class="categories-cards"  style = "color:white;">
     <% @categories.each do |category| %>
-      <div class="card">
-      <div class="col-12">
+      <div class="category-card" id="<%= category.id %>" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("<%= asset_path("#{category.image_url}") %>")'>
         <%= render "category", category: category %>
-        </div>
       </div>
-      <% end %>
-
+    <% end %>
 </div>

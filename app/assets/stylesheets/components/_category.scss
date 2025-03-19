@@ -1,0 +1,80 @@
+.cat-title {
+  font-family: "Saira Stencil One", sans-serif;
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  text-align: center;
+  font-size: 32px;
+  color: $dark-orange;
+  // margin-bottom: 20px;
+  margin: 20px 40px;
+  font-weight: bold;
+  font-style: italic;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.category-card {
+  background-size: cover;
+  background-position: center;
+  height: 120px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-family: "Cinzel Decorative", serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  justify-self:center;
+
+  &:hover {
+    background-color: black;
+  }
+}
+
+.categories-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .categories-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .categories-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .categories-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .categories-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .categories-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+.cat-img {
+  height: 200px;
+}
