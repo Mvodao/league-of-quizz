@@ -1,12 +1,14 @@
 <div class="spells row overflow-hidden" data-controller="spell">
+  <div class="d-flex justify-content-center">
     <span class= "title">Please choose a malus or a bonus</span>
-    <% @spells.each do |spell| %>
-      <div class="col-4">
-        <%= render "spell", spell: spell %>
-      </div>
-    <% end %>
-    <%= form_with(url: add_spell_game_path(@game), method: :post, data: { spell_target:"form", action:"submit->spell#fire", turbo: false}) do |f| %>
-      <%= f.hidden_field :spell_id, value: "", data: {spell_target:"spellid"} %>
-      <%= f.submit "Confirm", class: "btn btn-find-opponent" %>
-    <% end %>
+  </div>
+  <% @spells.each do |spell| %>
+    <div class="col-4 mt-3">
+      <%= render "spell", spell: spell %>
+    </div>
+  <% end %>
+  <%= form_with(url: add_spell_game_path(@game), method: :post, data: { spell_target:"form", action:"submit->spell#fire", turbo: false}) do |f| %>
+    <%= f.hidden_field :spell_id, value: "", data: {spell_target:"spellid"} %>
+    <%= f.submit "Confirm", class: "btn btn-spell-confirm mt-3" %>
+  <% end %>
 </div>

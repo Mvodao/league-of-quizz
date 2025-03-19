@@ -1,8 +1,8 @@
 <div data-controller="countdown">
-  <div class="container d-flex vh-100 text-center flex-column" style="color:white;font-weight:bold;font-size:32px;">
+  <div class="container d-flex vh-100 text-center flex-column">
     <div class="countdown"></div>
-    <p style="margin-top:100px;">The game is about to start</p>
-    <p style="margin-top:90px;"><span data-countdown-target="time">5</span> sec</p>
+    <p class="cat-title" style="margin-top:100px;">The game is about to start</p>
+    <p style="margin-top:90px;color:white;font-size:32px;font-weight:bold;"><span data-countdown-target="time">5</span> sec</p>
   </div>
 
   <%= link_to "", game_question_path(@game, 1), class:"visually-hidden", data: { countdown_target: "startGame"} %>

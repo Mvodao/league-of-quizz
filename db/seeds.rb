@@ -4,7 +4,7 @@ filepath = "db/questions.csv"
 
 puts "Création des catégories..."
 CATEGORIES = %w[Geography Entertainment History Art\ &\ Literature Sciences Sport]
-categories = CATEGORIES.map { |name| Category.create!(name: name) }
+categories = CATEGORIES.map { |name| Category.create!(name: name, image_url:"categories/#{name}.avif") }
 
 CSV.foreach(filepath, headers: true) do |row|
   category = Category.find_by(name: row["Category"])

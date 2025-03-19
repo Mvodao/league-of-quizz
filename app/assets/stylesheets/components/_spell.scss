@@ -84,14 +84,21 @@ text-align: center;
 }
 
 .title{
-  color: white;
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-family: "Saira Stencil One", sans-serif;
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  text-align: center;
+  font-size: 32px;
+  color: $dark-orange;
+  // margin-bottom: 20px;
+  margin: 20px 40px;
   font-weight: bold;
+  font-style: italic;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .spell-card {
-
   height: 120px;
   width: 100%;
   border: 3px solid white;
