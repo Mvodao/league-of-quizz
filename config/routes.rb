@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get "choose_spell", to: "spells#edit"
       get "start", to: "games#start"
       get "result", to: "games#result"
+      get "result_training", to: "games#training_result"
     end
     resources :questions, only: [:show]
   end
