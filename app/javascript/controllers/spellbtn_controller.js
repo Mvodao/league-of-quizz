@@ -6,7 +6,6 @@ export default class extends Controller {
   }
 
   fire (event){
-    console.log("coucou")
     event.preventDefault(); // Annule toute action par défaut (utile si c'est un lien)
     event.stopPropagation(); // Empêche l'événement de remonter aux parents
     event.stopImmediatePropagation(); // Empêche tout autre gestionnaire de cet événement de s’exécuter
