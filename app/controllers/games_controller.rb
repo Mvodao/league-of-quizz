@@ -120,5 +120,6 @@ class GamesController < ApplicationController
   def training_result
     @game = Game.find(params[:id])
     @current_user = @game.user_games.find_by(user: current_user)
+    @questions = @game.questions
   end
 end

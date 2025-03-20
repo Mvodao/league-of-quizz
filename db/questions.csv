@@ -25,7 +25,7 @@ Art & Literature,In which city is the Sistine Chapel located?,Rome,Florence,Mila
 Art & Literature,To which artistic movement does Salvador Dalí belong?,Surrealism,Cubism,Impressionism,Expressionism
 Art & Literature,Who wrote Romeo and Juliet?,Shakespeare,Molière,Charles Dickens,Jane Austen
 Art & Literature,What is the title of the famous painting of a pipe by René Magritte?,Ceci n'est pas une pipe,Les Amants,Le Fils de l'homme,La Trahison des images
-Art & Literature,Who wrote The Lord of the Rings?,J.R.R. Tolkien,George R.R. Martin,George R.R. Martin,J.K. Rowling
+Art & Literature,Who wrote The Lord of the Rings?,J.R.R. Tolkien,George R.R. Martin,C.S. Lewis,J.K. Rowling
 Art & Literature,Which poem by Baudelaire is taken from Les Fleurs du mal?,L'Albatros,Spleen,Correspondances,Invitation au voyage
 Art & Literature,In which museum is Van Gogh's Starry Night on display?,Museum of Modern Art,Musée d'Orsay,Tate Modern,MET
 Art & Literature,What is the title of Auguste Rodin's iconic sculpture of a pensive man?,The Thinker,The Gates of Hell,The Burghers of Calais,Walking Man
@@ -45,7 +45,7 @@ Sport,In which country were the 2012 Olympic Games held? ,United Kingdom,Greece,
 Sport,How many holes are there on a standard golf course?,18,9,15,21
 Sport,Which athlete won 8 gold medals at the 2008 Beijing Olympics?,Michael Phelps,Usain Bolt, Mark Spitz,Ryan Lochte
 Sport,In which sport is a reel used?,Fishing,Boxing,Tennis,Baseball
-Sport,Who holds the world record in the men's 100 metre sprint (2025)?,Usain Bolt,Carl Lewis,Tyson Gay
+Sport,Who holds the world record in the men's 100 metre sprint (2025)?,Usain Bolt,Carl Lewis,Tyson Gay,Justin Gatlin
 Sport,Which country won the Rugby World Cup in 2023? ,South Africa,New Zealand,England,Australia
 Sport,How many Grand Slams are played in tennis each year?,4,3,5,6
 Sport,Which boxer is nicknamed The Greatest?,Muhammad Ali,Mike Tyson,Floyd Mayweather,Joe Frazier
@@ -54,8 +54,8 @@ Entertainment,Which saga features Jedi and Sith?,Star Wars,Star Trek,Harry Potte
 Entertainment,What is the name of J.K. Rowling's famous bespectacled wizard?,Harry Potter,Merlin,Gandalf,Dumbledore
 Entertainment,Who played Iron Man in the Marvel universe?,Robert Downey Jr, Chris Evans,Mark Ruffalo,Chris Hemsworth
 Entertainment,In Friends what is Ross's job?,Palaeontologist,Maths teacher,Doctor,Judge
-Entertainment,Which film won the Oscar for Best Film in 1997 starring Leonardo DiCaprio?,Titanic,Inception,Aviator,Aviator
-Entertainment,Which TV series features an Iron Throne? ,Game of Thrones,The Crown,Vikings,The Witcher
+Entertainment,Which film won the Oscar for Best Film in 1997 starring Leonardo DiCaprio?,Titanic,Inception,Aviator,Romeo + Juliet
+Entertainment,Which TV series features an Iron Throne?,Game of Thrones,The Crown,Vikings,The Witcher
 Entertainment,Who directed the film Inception?,Christopher Nolan,Steven Spielberg,Martin Scorsese,James Cameron
 Entertainment,Which Disney character sings Libérée délivrée?,Elsa,Anna,Belle,Cendrillon
 Entertainment,Which actor played James Bond in Casino Royale (2006)?,Daniel Craig,Pierce Brosnan,Sean Connery,Timothy Dalton
