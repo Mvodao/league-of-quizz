@@ -11,33 +11,29 @@ export default class extends Controller {
                     "submitBtn1",
                     "submitBtn2",
                     "submitBtn3",
-                    "submitBtn4"]
+                    "submitBtn4",
+                    "nextbtn"]
 
   static values = {
     iscorrect: String,
-    quickplay: String
+    quickplay: String,
+    answered: String
   }
 
   connect(){
     let currentPath = window. location. pathname;
     const questionIdx = currentPath.split("/")[currentPath.split("/").indexOf("questions")+1]
+    console.log(this.quickplayValue)
+    console.log(this.answeredValue)
     if (this.quickplayValue === "true") {
-      if (questionIdx === "2") {
-        setTimeout(() => {
+      if ( this.answeredValue === "true") {
           this.modaldivTarget.classList.remove("success-modal")
           this.modaldivTarget.classList.add("lose-modal")
           this.modaldivTarget.innerText = "Your opponent was faster than you!"
           this.modalbtnTarget.click()
-          setTimeout(() => {this.sub1Target.submit()}, 3000)
-        }, 3000);
-      } else if (questionIdx === "4") {
-        setTimeout(() => {
-          this.modaldivTarget.classList.remove("success-modal")
-          this.modaldivTarget.classList.add("lose-modal")
-          this.modaldivTarget.innerText = "Your opponent was fatest!"
-          this.modalbtnTarget.click()
-          setTimeout(() => {this.sub1Target.submit()}, 3000)
-        }, 5000);
+          setTimeout(() => {
+            this.nextbtnTarget.click()
+          }, 3000);
       }
     }
   }
