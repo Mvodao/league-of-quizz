@@ -7,13 +7,14 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-.card-result-avatar {
+.img-result-avatar {
   border-radius: 50%;
   padding: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
   animation: pulse 2s infinite ease-in-out;
-  height: 250px;
-  width: 250px;
+  // height: 250px; //
+  width: 68.5%;
+  position: absolute;
 }
 
 .card-result:hover {
@@ -21,15 +22,55 @@
   transform: scale(1.03);
 }
 
-.card-body {
+.card-body-wrapper {
   border-radius: 50%;
-  background-size: cover !important;
-  background-position: center;
-  background-clip: border-box !important;
-  overflow: hidden !important;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.card-result-avatar {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("<%= asset_path('background_avatar.png') %>");
+  background-size: cover;
+  background-position: center;
+  width: 250px; /* Ajuste selon la taille de ton avatar */
+  height: 250px; /* Ajuste selon la taille de ton avatar */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.btn-training-result {
+  font-family: "Saira Stencil One", sans-serif;
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  background-size:200% auto;
+  margin-top: 5px;
+  height: 50px;
+  width: 150px;
+  border-radius: 15px;
+  align-items:center;
+  display:flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size:x-large;
+  border-color: $dark-orange;
+  color: white;
+  box-shadow: 0 0 5px #eee;
+  text-decoration: none;
+  transition: 0.5s;
+  margin: 5px 20px 0px 0px;
+
+
+  &:hover {
+    // color: white;
+    background-position: right center; /* change the direction of the change here */
+    // background-color: $dark-orange;
+    border-color: $dark-orange;
+    color:black;
+  }
+
 }
 
 @keyframes bounce {
@@ -73,4 +114,11 @@
 }
 .pop-hover:hover {
   animation: pop 0.3s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin: 0;
+  padding: 5px 5px;
 }

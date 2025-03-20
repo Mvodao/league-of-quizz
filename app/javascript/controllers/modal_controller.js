@@ -43,7 +43,7 @@ export default class extends Controller {
     // console.log(event.currentTarget.classList.contains("answer_true"))
     if (event.currentTarget.classList.contains("answer_true")) {
       if (this.quickplayValue === "false") {
-        this.modaldivTarget.innerText = "GOOD JOB DAVID"
+        this.modaldivTarget.innerText = "GOOD JOB"
       }
       this.modalbtnTarget.click()
       setTimeout(() => {
@@ -64,7 +64,7 @@ export default class extends Controller {
     // console.log(event.currentTarget.classList.contains("answer_true"))
     if (event.currentTarget.classList.contains("answer_true")) {
       if (this.quickplayValue === "false"){
-        this.modaldivTarget.innerText = "GOOD JOB DAVID"
+        this.modaldivTarget.innerText = "GOOD JOB"
       }
 
       this.modalbtnTarget.click()
@@ -85,7 +85,7 @@ export default class extends Controller {
     // console.log(event.currentTarget.classList.contains("answer_true"))
     if (event.currentTarget.classList.contains("answer_true")) {
       if (this.quickplayValue === "false"){
-        this.modaldivTarget.innerText = "GOOD JOB DAVID"
+        this.modaldivTarget.innerText = "GOOD JOB"
       }
       this.modalbtnTarget.click()
       setTimeout(() => {
@@ -105,7 +105,7 @@ export default class extends Controller {
     // console.log(event.currentTarget.classList.contains("answer_true"))
     if (event.currentTarget.classList.contains("answer_true")) {
       if (this.quickplayValue === "false"){
-        this.modaldivTarget.innerText = "GOOD JOB DAVID"
+        this.modaldivTarget.innerText = "GOOD JOB"
       }
       this.modalbtnTarget.click()
       setTimeout(() => {
