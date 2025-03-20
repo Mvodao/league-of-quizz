@@ -298,7 +298,7 @@ body {
   width: 25%;
   height: 20vmin;
   background: #3fe9ea;
-  background-image: linear-gradient(90deg, #3fe9ea, #4ea6d0);
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
   left: 30%;
   top: 15%;
   box-shadow: 0 1vmin 5vmin rgba(0, 0, 0, 0.5);
@@ -325,12 +325,17 @@ body {
 }
 
 .info {
-  color: #3fe9ea;
+  /* color: #3fe9ea; */
   text-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.5);
   font-size: 200%;
   padding: 0 24px;
   text-align: center;
   font-style:italic;
+  font-weight:bold;
+  background-image: linear-gradient(to right, #ff522f 0%, #F09819  51%, #FF512F  100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .link {
