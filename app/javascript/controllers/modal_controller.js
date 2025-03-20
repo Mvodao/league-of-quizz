@@ -46,8 +46,9 @@ export default class extends Controller {
         this.modaldivTarget.innerText = "GOOD JOB"
       }
       this.modalbtnTarget.click()
+      this.sub1Target.submit()
       setTimeout(() => {
-        this.sub1Target.submit()
+        this.nextbtnTarget.click()
       }, 3000);
     } else {
       this.submitBtn1Target.classList.add("error");
@@ -68,8 +69,9 @@ export default class extends Controller {
       }
 
       this.modalbtnTarget.click()
+      this.sub2Target.submit()
       setTimeout(() => {
-        this.sub2Target.submit()
+        this.nextbtnTarget.click()
       }, 3000);
     } else {
       this.submitBtn2Target.classList.add("error");
@@ -88,8 +90,9 @@ export default class extends Controller {
         this.modaldivTarget.innerText = "GOOD JOB"
       }
       this.modalbtnTarget.click()
+      this.sub3Target.submit()
       setTimeout(() => {
-        this.sub3Target.submit()
+        this.nextbtnTarget.click()
       }, 3000);
     } else {
       this.submitBtn3Target.classList.add("error");
@@ -108,8 +111,9 @@ export default class extends Controller {
         this.modaldivTarget.innerText = "GOOD JOB"
       }
       this.modalbtnTarget.click()
+      this.sub4Target.submit()
       setTimeout(() => {
-        this.sub4Target.submit()
+        this.nextbtnTarget.click()
       }, 3000);
 
     } else {
