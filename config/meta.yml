@@ -1,0 +1,6 @@
+# config/meta.yml
+meta_product_name: "League of Quizz"
+meta_title: "League of Quizz - Come and see if you're the GOAT of quizzes"
+meta_description: "Come and see if you're the GOAT of quizzes"
+meta_image: "resized-og-image.png"
+twitter_account: "@product_twitter_account" # required for Twitter Cards
