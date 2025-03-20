@@ -43,7 +43,7 @@
         <%= form_with(url: game_path(@game), class:"answer_#{answer.is_correct.to_s}",method: :patch, data: { modal_target:"sub#{index}", action: "submit->modal#fire#{index}"}) do |f| %>
           <%= f.hidden_field :question_id, value: @question.id %>
           <%= f.hidden_field :answer_id, value: answer.id %>
-          <%= f.hidden_field :bonus_disabled, value: false, data: {bonus_target: "bonusDisabled"} %>
+          <%= f.hidden_field :bonus_disabled, value: @is_used, data: {bonus_target: "bonusDisabled"} %>
           <%= f.hidden_field :question_index, value: @current_question_index %>
           <%= f.submit answer.content, class: "btn answer-button", data: {modal_target:"submitBtn#{index}"} %>
         <% end %>

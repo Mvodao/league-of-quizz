@@ -20,9 +20,6 @@ export default class extends Controller {
         } else {
           card.classList.add("card-selected");
           this.spellidTarget.value = card.id
-          // this.spellModalBtnTarget.click()
-          // this.spellDescriptionModalTarget.innerText = this.spellDescriptionTarget.innerText
-          // this.spellNameModalTarget.innerText = this.spellNameTarget.innerText
         }
         cards.forEach(element => {
           if (element !== card) {

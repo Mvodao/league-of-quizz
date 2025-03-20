@@ -60,6 +60,7 @@ class GamesController < ApplicationController
     @question = @game.questions[@question_id]
     @answer = Answer.find(params[:answer_id])
     @is_correct = @answer.is_correct
+    @game.user_games.find_by(user: current_user).update(is_used: params[:bonus_disabled])
 
     if @is_correct && @game.questions_pools.find_by(question: @question).user.blank?
       last_score = @game.user_games.find_by(user: current_user).score
@@ -88,11 +89,6 @@ class GamesController < ApplicationController
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score + 1)
       @next_question = params[:question_index].to_i + 1
-      # if  @next_question > @game.questions.count
-      #   redirect_to result_training_game_path(@game)
-      # else
-      #   redirect_to game_question_path(@game, @next_question)
-      # end
     else
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score - 1)
