@@ -61,7 +61,7 @@ class GamesController < ApplicationController
     @answer = Answer.find(params[:answer_id])
     @is_correct = @answer.is_correct
 
-    if @is_correct
+    if @is_correct && @game.questions_pools.find_by(question: @question).user.blank?
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score + 1)
       @next_question = params[:question_index].to_i + 1
