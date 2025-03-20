@@ -1,8 +1,8 @@
 development:
-  adapter: async
+  adapter: solid_cable
 
-test:
-  adapter: test
+production:
+  adapter: solid_cable
 
 production:
   adapter: redis
