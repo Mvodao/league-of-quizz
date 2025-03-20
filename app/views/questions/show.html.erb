@@ -67,7 +67,7 @@
     <span data-timer-target="timer" id="clock" > secondes restantes</span>
   </div>
 
-  <%= link_to "Next_question", game_question_path(@game, @next_question), class:"visually-hidden", data: {modal_target:"nextbtn"}%>
+  <%= link_to "Next_question", @current_question_index < @questions.count ? game_question_path(@game, @next_question): result_game_path(@game), class:"visually-hidden", data: {modal_target:"nextbtn"}%>
 </div>
 <div id="reload-div">
   <div id="currentUser" class="visually-hidden" data-currentuser="<%= current_user.id %>"></div>

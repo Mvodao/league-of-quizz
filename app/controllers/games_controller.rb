@@ -67,18 +67,17 @@ class GamesController < ApplicationController
       @next_question = params[:question_index].to_i + 1
       @game.questions_pools.find_by(question: @question).update(user: current_user)
       # broadcast a mettre en place ici
-      temp = current_user.id
       Turbo::StreamsChannel.broadcast_append_to(
         "game-#{@game.id}",
         partial: "questions/reload",
         target: "reload-div",
         locals: {userWhoAnswered: current_user.id})
 
-      if  @next_question > @game.questions.count
-        redirect_to result_training_game_path(@game)
-      else
-        redirect_to game_question_path(@game, @next_question)
-      end
+      # if  @next_question > @game.questions.count
+      #   redirect_to result_game_path(@game)
+      # else
+      #   redirect_to game_question_path(@game, @next_question)
+      # end
     else
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score - 1)
