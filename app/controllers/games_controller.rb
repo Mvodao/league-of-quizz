@@ -72,12 +72,6 @@ class GamesController < ApplicationController
         partial: "questions/reload",
         target: "reload-div",
         locals: {userWhoAnswered: current_user.id})
-
-      # if  @next_question > @game.questions.count
-      #   redirect_to result_game_path(@game)
-      # else
-      #   redirect_to game_question_path(@game, @next_question)
-      # end
     else
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score - 1)
@@ -94,11 +88,11 @@ class GamesController < ApplicationController
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score + 1)
       @next_question = params[:question_index].to_i + 1
-      if  @next_question > @game.questions.count
-        redirect_to result_training_game_path(@game)
-      else
-        redirect_to game_question_path(@game, @next_question)
-      end
+      # if  @next_question > @game.questions.count
+      #   redirect_to result_training_game_path(@game)
+      # else
+      #   redirect_to game_question_path(@game, @next_question)
+      # end
     else
       last_score = @game.user_games.find_by(user: current_user).score
       @game.user_games.find_by(user: current_user).update(score: last_score - 1)

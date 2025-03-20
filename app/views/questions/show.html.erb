@@ -66,8 +66,11 @@
   <div class="d-flex justify-content-center mt-2" data-controller="timer" data-timer-duration-value="30">
     <span data-timer-target="timer" id="clock" > secondes restantes</span>
   </div>
-
-  <%= link_to "Next_question", @current_question_index < @questions.count ? game_question_path(@game, @next_question): result_game_path(@game), class:"visually-hidden", data: {modal_target:"nextbtn"}%>
+  <% if @quickplay %>
+    <%= link_to "Next_question", @current_question_index < @questions.count ? game_question_path(@game, @next_question): result_game_path(@game), class:"visually-hidden", data: {modal_target:"nextbtn"}%>
+  <% elsif !@quickplay %>
+    <%= link_to "Next_question", @current_question_index < @questions.count ? game_question_path(@game, @next_question): result_training_game_path(@game), class:"visually-hidden", data: {modal_target:"nextbtn"}%>
+  <% end %>
 </div>
 <div id="reload-div">
   <div id="currentUser" class="visually-hidden" data-currentuser="<%= current_user.id %>"></div>
