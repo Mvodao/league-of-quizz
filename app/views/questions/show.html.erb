@@ -1,4 +1,5 @@
-<div class="container" data-controller="modal bonus" data-bonus-bname-value="<%= @is_used ? "None" : @user_spell&.name %>" data-modal-quickplay-value="<%= @quickplay %>">
+<%= turbo_stream_from "game-#{@game.id}" %>
+<div class="container" data-controller="modal bonus" data-bonus-bname-value="<%= @is_used ? "None" : @user_spell&.name %>" data-modal-quickplay-value="<%= @quickplay %>" data-modal-answered-value="<%= @already_answered %>">
   <% if @question.nil? %>
     <h3 class="text-center">Vous avez terminé toutes les questions !</h3>
     <div class="text-center">
@@ -65,4 +66,9 @@
   <div class="d-flex justify-content-center mt-2" data-controller="timer" data-timer-duration-value="30">
     <span data-timer-target="timer" id="clock" > secondes restantes</span>
   </div>
+
+  <%= link_to "Next_question", game_question_path(@game, @next_question), class:"visually-hidden", data: {modal_target:"nextbtn"}%>
+</div>
+<div id="reload-div">
+  <div id="currentUser" class="visually-hidden" data-currentuser="<%= current_user.id %>"></div>
 </div>

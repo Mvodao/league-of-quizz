@@ -38,65 +38,6 @@ user = User.new(username: "Gaia", first_name:"Bot", last_name:"Combat", email:"b
 user.avatar = avatar
 user.save
 
-
-
-# puts "Création des questions et des réponses..."
-# questions_data = [
-#   {
-#     content: "Quelle est la capitale de la France ?",
-#     category: categories[0], # Géographie
-#     correct_answer: "Paris",
-#     wrong_answers: ["Lyon", "Marseille", "Nice"]
-#   },
-#   {
-#     content: "Qui a réalisé le film *Inception* ?",
-#     category: categories[1], # Divertissement
-#     correct_answer: "Christopher Nolan",
-#     wrong_answers: ["Steven Spielberg", "Quentin Tarantino", "James Cameron"]
-#   },
-#   {
-#     content: "En quelle année a eu lieu la Révolution française ?",
-#     category: categories[2], # Histoire
-#     correct_answer: "1789",
-#     wrong_answers: ["1776", "1804", "1848"]
-#   },
-#   {
-#     content: "Quel peintre est célèbre pour *La Nuit étoilée* ?",
-#     category: categories[3], # Art & Littérature
-#     correct_answer: "Vincent Van Gogh",
-#     wrong_answers: ["Claude Monet", "Pablo Picasso", "Salvador Dalí"]
-#   },
-#   {
-#     content: "Quelle planète est la plus proche du Soleil ?",
-#     category: categories[4], # Littérature Sciences Sport
-#     correct_answer: "Mercure",
-#     wrong_answers: ["Vénus", "Mars", "Jupiter"]
-#   }
-# ]
-
-# questions_data.each do |data|
-#   question = Question.create!(
-#     content: data[:content],
-#     question_type: "text",
-#     media_url: "",
-#     category: data[:category]
-#   )
-
-#   Answer.create!(content: data[:correct_answer], is_correct: true, question: question)
-
-#   data[:wrong_answers].each do |wrong_answer|
-#     Answer.create!(content: wrong_answer, is_correct: false, question: question)
-#   end
-# end
-
-
-# 9.times do |i|
-#   Spell.create!(name: Faker::Games::Pokemon.move,
-#               image_url: "img_#{i+1}.jpg",
-#               description: Faker::Lorem.paragraph(sentence_count: 2))
-# end
-#
-#
 Spell.create!(name: "fifty-fifty",
 image_url:"spells/fifty-fifty.webp",
 description: "The system removes two incorrect answers, leaving one correct and one incorrect option.")
